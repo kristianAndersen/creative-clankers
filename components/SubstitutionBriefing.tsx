@@ -192,9 +192,11 @@ export function SubstitutionBriefing() {
       {/* error state — mirrors StudioChat.tsx */}
       {error && (
         <div className="rounded-lg border border-human/40 bg-blush px-4 py-3 text-sm text-human-deep">
-          {error.message?.includes("GROQ_API_KEY")
+          {error.message?.includes("No GROQ_API_KEY set")
             ? "This demo needs a free Groq API key. Add GROQ_API_KEY to .env.local (see .env.example)."
-            : `Something went wrong: ${error.message}`}
+            : error.message?.startsWith("RATE_LIMIT:")
+              ? error.message.replace(/^RATE_LIMIT:\s*/, "")
+              : `Something went wrong: ${error.message}`}
         </div>
       )}
 

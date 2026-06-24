@@ -20,9 +20,6 @@ import { rateLimit } from "@/lib/ratelimit";
 
 export const maxDuration = 60;
 
-const apiKey = process.env.GROQ_API_KEY?.trim();
-const modelId = process.env.GROQ_MODEL?.trim() || "llama-3.3-70b-versatile";
-
 // Lean projections: tool results re-enter the model context on every step, so we
 // strip them to only what the briefing needs. This keeps a full run well under
 // Groq's free-tier limit (12k tokens/minute) — the full detail records (long
@@ -50,7 +47,9 @@ function leanDetail(d: ProduktDetaljer) {
 }
 
 function leanSearch(items: ProduktSearchItem[]) {
-  return items.slice(0, 25).map((p) => ({
+  // Cap hard: the free tier's 12k tokens/minute is shared across every model
+  // round-trip in the agent loop, so search payloads must stay small.
+  return items.slice(0, 8).map((p) => ({
     Navn: p.Navn,
     Varenummer: p.Varenummer,
     Styrke: p.Styrke,
@@ -79,9 +78,10 @@ WORKFLOW — follow this sequence exactly for every query:
    Record: Navn, Varenummer, Firma, Styrke, Pakning, PrisPrEnhed, PrisPrPakning,
    AIP, TilskudBeregnesAf, and the Substitutioner array.
 
-3. FETCH EACH SUBSTITUTE
-   For every item in Substitutioner, call getDetail with Substitutioner[i].Varenummer.
-   Fetch all substitutes — do not skip any.
+3. FETCH SUBSTITUTES (budget-limited)
+   Call getDetail on the anchor's Substitutioner entries, but fetch AT MOST 4
+   of them (the free tier has a tight token budget). If there are more than 4,
+   note "Showing 4 of N substitutes (token budget)" and proceed with those.
 
 4. FILTER DISCONTINUED
    For each substitute detail result, check Udgaaet.
@@ -149,6 +149,11 @@ If a tool returns { error: "..." }, note it briefly ("Could not fetch detail for
 VNR <vnr>: <error>") and continue with the products you have. Do not halt.`;
 
 export async function POST(req: Request) {
+  // Read env per-request (not at module load) so a key added to .env.local is
+  // picked up without the stale-module-scope issue across dev HMR reloads.
+  const apiKey = process.env.GROQ_API_KEY?.trim();
+  const modelId = process.env.GROQ_MODEL?.trim() || "llama-3.3-70b-versatile";
+
   if (!apiKey) {
     return Response.json(
       {
@@ -178,9 +183,9 @@ export async function POST(req: Request) {
     model: groq(modelId),
     system: SYSTEM,
     messages: await convertToModelMessages(messages),
-    maxOutputTokens: 2500,
+    maxOutputTokens: 1200,
     temperature: 0.3,
-    stopWhen: stepCountIs(12),
+    stopWhen: stepCountIs(10),
     tools: {
       searchBySubstance: tool({
         description:
@@ -230,12 +235,28 @@ export async function POST(req: Request) {
   // "An error occurred." — Groq's free tier enforces a 12k tokens/minute
   // window, and a demo should explain that rather than fail blankly.
   return result.toUIMessageStreamResponse({
-    onError: (error) => {
-      const msg = error instanceof Error ? error.message : String(error);
+    onError: (err) => {
+      // The callback may hand us the error directly or wrapped as { error }.
+      const e: unknown =
+        err && typeof err === "object" && "error" in err
+          ? (err as { error: unknown }).error
+          : err;
+      const anyE = e as {
+        message?: string;
+        responseBody?: string;
+        name?: string;
+        statusCode?: number;
+      } | null;
+      const msg =
+        anyE?.message ||
+        anyE?.responseBody ||
+        (typeof e === "string" ? e : "") ||
+        anyE?.name ||
+        "unknown error";
       if (/tokens per minute|TPM|rate.?limit|too large|\b429\b/i.test(msg)) {
-        return "Groq free-tier rate limit reached (12k tokens/minute). Wait about a minute and try again, or set a higher-tier GROQ_API_KEY.";
+        return "RATE_LIMIT: Groq's free tier allows 12k tokens/minute. Wait about a minute between queries, or raise your Groq usage tier.";
       }
-      return msg || "The substitution agent encountered an error. Please try again.";
+      return `Substitution agent error: ${msg}`;
     },
   });
 }
