@@ -68,8 +68,11 @@ export default function Home() {
               <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 brand-gradient-bg transition-transform duration-300 group-hover:scale-x-100" />
               <div className="mb-4 flex items-center justify-between">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1 text-xs font-medium text-white/80">
-                  <span className="inline-block h-1.5 w-1.5 rounded-full bg-human" />
-                  Live
+                  <span
+                    className={`inline-block h-1.5 w-1.5 rounded-full${p.status !== "framework" ? " bg-human" : ""}`}
+                    style={p.status === "framework" ? { background: "#c87c0a" } : undefined}
+                  />
+                  {p.status === "framework" ? "Framework" : "Live"}
                 </span>
                 <span className="text-xs text-white/35">{p.year}</span>
               </div>
