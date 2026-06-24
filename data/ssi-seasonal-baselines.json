@@ -1,0 +1,3278 @@
+[
+  {
+    "week": 1,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 1,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 1,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 2,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 2,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 2,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 3,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 3,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 3,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 4,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 4,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 4,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 5,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 5,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 5,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 6,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 6,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 6,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 7,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 7,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 7,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 8,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 8,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 8,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 9,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 9,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 9,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 10,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 10,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 10,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 11,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 11,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 11,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 12,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 12,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 12,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 13,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 13,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 13,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 14,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 14,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 14,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 15,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 15,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 15,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 16,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 16,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 16,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 17,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 17,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 17,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 18,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 18,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 18,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 19,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 19,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 19,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 20,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 20,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 20,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 21,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 21,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 21,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 22,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 22,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 22,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 23,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 23,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 23,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 24,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 24,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 24,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 25,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 25,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 25,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 26,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 26,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 26,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 27,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 27,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 27,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 28,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 28,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 28,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 29,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 29,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 29,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 30,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 30,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 30,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 31,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 31,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 31,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 32,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 32,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 32,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 33,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 33,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 33,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 34,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 34,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 34,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 35,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 35,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 35,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 36,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 36,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 36,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 37,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 37,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 37,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 38,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 38,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 38,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 39,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 39,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 39,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 40,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 40,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 40,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 41,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 41,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 41,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 42,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 42,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 42,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 43,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 43,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 43,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 44,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 44,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 44,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 45,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 45,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 45,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 46,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 46,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 46,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 47,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 47,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 47,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 48,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 48,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 48,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 49,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 49,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 49,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 50,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 50,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 50,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 51,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 51,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 51,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 52,
+    "year": 2021,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 52,
+    "year": 2021,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 52,
+    "year": 2021,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 1,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 1,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 1,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 2,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 2,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 2,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 3,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 3,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 3,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 4,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 4,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 4,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 5,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 5,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 5,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 6,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 6,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 6,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 7,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 7,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 7,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 8,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 8,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 8,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 9,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 9,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 9,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 10,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 10,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 10,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 11,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 11,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 11,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 12,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 12,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 12,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 13,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 13,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 13,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 14,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 14,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 14,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 15,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 15,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 15,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 16,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 16,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 16,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 17,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 17,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 17,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 18,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 18,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 18,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 19,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 19,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 19,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 20,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 20,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 20,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 21,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 21,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 21,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 22,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 22,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 22,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 23,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 23,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 23,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 24,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 24,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 24,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 25,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 25,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 25,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 26,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 26,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 26,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 27,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 27,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 27,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 28,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 28,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 28,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 29,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 29,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 29,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 30,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 30,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 30,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 31,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 31,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 31,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 32,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 32,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 32,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 33,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 33,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 33,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 34,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 34,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 34,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 35,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 35,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 35,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 36,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 36,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 36,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 37,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 37,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 37,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 38,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 38,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 38,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 39,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 39,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 39,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 40,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 40,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 40,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 41,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 41,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 41,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 42,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 42,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 42,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 43,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 43,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 43,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 44,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 44,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 44,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 45,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 45,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 45,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 46,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 46,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 46,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 47,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 47,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 47,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 48,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 48,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 48,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 49,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 49,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 49,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 50,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 50,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 50,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 51,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 51,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 51,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 52,
+    "year": 2022,
+    "pathogen": "covid19",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 52,
+    "year": 2022,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 52,
+    "year": 2022,
+    "pathogen": "rsv",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 1,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 1,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 1,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 2,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 2,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 2,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 3,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 3,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 3,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 4,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 4,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 4,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 5,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 5,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 5,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 6,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 6,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 6,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 7,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 7,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 7,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 8,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 8,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 8,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 9,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 9,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 9,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 10,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 10,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Høj",
+    "source": "SSI"
+  },
+  {
+    "week": 10,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 11,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 11,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 11,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 12,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 12,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 12,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 13,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 13,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 13,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 14,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 14,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 14,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 15,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 15,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 15,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 16,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 16,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 16,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 17,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 17,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 17,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 18,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 18,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 18,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 19,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 19,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 19,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 20,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 20,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 20,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 21,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 21,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 21,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 22,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 22,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 22,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 23,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 23,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 23,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 24,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 24,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 24,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 25,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 25,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 25,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 26,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 26,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 26,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 27,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 27,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 27,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 28,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 28,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 28,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 29,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 29,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 29,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 30,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 30,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 30,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 31,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 31,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 31,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 32,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 32,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 32,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 33,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 33,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 33,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 34,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 34,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 34,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 35,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 35,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 35,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 36,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 36,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 36,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 37,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 37,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 37,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 38,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 38,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 38,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 39,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 39,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 39,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 40,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 40,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Rolig",
+    "source": "SSI"
+  },
+  {
+    "week": 40,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 41,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 41,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 41,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 42,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 42,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 42,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 43,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 43,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 43,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 44,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 44,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 44,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 45,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 45,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 45,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 46,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 46,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 46,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 47,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 47,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 47,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 48,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 48,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 48,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 49,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 49,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 49,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 50,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 50,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 50,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 51,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 51,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 51,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 52,
+    "year": 2023,
+    "pathogen": "covid19",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 52,
+    "year": 2023,
+    "pathogen": "influenza",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  },
+  {
+    "week": 52,
+    "year": 2023,
+    "pathogen": "rsv",
+    "nationalTier": "Forhøjet",
+    "source": "SSI"
+  }
+]

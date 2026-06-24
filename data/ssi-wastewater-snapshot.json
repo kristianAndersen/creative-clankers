@@ -1,0 +1,301 @@
+{
+  "_seed": true,
+  "_note": "SEED DATA — synthesized for demo. Plant locations and kommuneKoder are REAL (resolved via live DAWA). Scores are plausible but NOT fetched from SSI. Run \"bun run ssi:snapshot\" after SSI publishes the weekly ZIP to replace with real data.",
+  "_refreshCommand": "bun run ssi:snapshot",
+  "_ssiSourceUrl": "https://en.ssi.dk/surveillance-and-preparedness/surveillance-in-denmark/national-wastewater-surveillance-of-sars-cov-2-and-influenza-a",
+  "week": 26,
+  "year": 2026,
+  "updatedAt": "2026-06-24T16:42:31.578Z",
+  "plants": [
+    {
+      "name": "Lynetten",
+      "catchmentCentroid": [
+        12.6262,
+        55.6924
+      ],
+      "kommuneKode": "0101",
+      "kommuneNavn": "København",
+      "score": 1
+    },
+    {
+      "name": "Damhusåen",
+      "catchmentCentroid": [
+        12.4358,
+        55.6826
+      ],
+      "kommuneKode": "0175",
+      "kommuneNavn": "Rødovre",
+      "score": 0
+    },
+    {
+      "name": "Avedøre",
+      "catchmentCentroid": [
+        12.4561,
+        55.6192
+      ],
+      "kommuneKode": "0167",
+      "kommuneNavn": "Hvidovre",
+      "score": 1
+    },
+    {
+      "name": "Lundtofte",
+      "catchmentCentroid": [
+        12.509,
+        55.7793
+      ],
+      "kommuneKode": "0173",
+      "kommuneNavn": "Lyngby-Taarbæk",
+      "score": 0
+    },
+    {
+      "name": "Helsingør RA",
+      "catchmentCentroid": [
+        12.5934,
+        56.0357
+      ],
+      "kommuneKode": "0217",
+      "kommuneNavn": "Helsingør",
+      "score": 0
+    },
+    {
+      "name": "Hillerød RA",
+      "catchmentCentroid": [
+        12.29,
+        55.93
+      ],
+      "kommuneKode": "0219",
+      "kommuneNavn": "Hillerød",
+      "score": 1
+    },
+    {
+      "name": "Frederikssund RA",
+      "catchmentCentroid": [
+        11.9,
+        55.83
+      ],
+      "kommuneKode": "0250",
+      "kommuneNavn": "Frederikssund",
+      "score": 0
+    },
+    {
+      "name": "Roskilde RA",
+      "catchmentCentroid": [
+        12.0867,
+        55.639
+      ],
+      "kommuneKode": "0265",
+      "kommuneNavn": "Roskilde",
+      "score": 0
+    },
+    {
+      "name": "Køge RA",
+      "catchmentCentroid": [
+        12.1863,
+        55.4524
+      ],
+      "kommuneKode": "0259",
+      "kommuneNavn": "Køge",
+      "score": 1
+    },
+    {
+      "name": "Næstved RA",
+      "catchmentCentroid": [
+        11.76,
+        55.23
+      ],
+      "kommuneKode": "0370",
+      "kommuneNavn": "Næstved",
+      "score": 0
+    },
+    {
+      "name": "Odense Ejby RA",
+      "catchmentCentroid": [
+        10.2913,
+        55.379
+      ],
+      "kommuneKode": "0461",
+      "kommuneNavn": "Odense",
+      "score": 1
+    },
+    {
+      "name": "Odense NØ RA",
+      "catchmentCentroid": [
+        10.4,
+        55.42
+      ],
+      "kommuneKode": "0461",
+      "kommuneNavn": "Odense",
+      "score": 0
+    },
+    {
+      "name": "Svendborg RA",
+      "catchmentCentroid": [
+        10.6078,
+        55.06
+      ],
+      "kommuneKode": "0479",
+      "kommuneNavn": "Svendborg",
+      "score": 0
+    },
+    {
+      "name": "Vejle RA",
+      "catchmentCentroid": [
+        9.5357,
+        55.709
+      ],
+      "kommuneKode": "0630",
+      "kommuneNavn": "Vejle",
+      "score": 2
+    },
+    {
+      "name": "Kolding RA",
+      "catchmentCentroid": [
+        9.493,
+        55.49
+      ],
+      "kommuneKode": "0621",
+      "kommuneNavn": "Kolding",
+      "score": 1
+    },
+    {
+      "name": "Fredericia RA",
+      "catchmentCentroid": [
+        9.75,
+        55.57
+      ],
+      "kommuneKode": "0607",
+      "kommuneNavn": "Fredericia",
+      "score": 0
+    },
+    {
+      "name": "Horsens RA",
+      "catchmentCentroid": [
+        9.86,
+        55.85
+      ],
+      "kommuneKode": "0615",
+      "kommuneNavn": "Horsens",
+      "score": 1
+    },
+    {
+      "name": "Aarhus Egå RA",
+      "catchmentCentroid": [
+        10.25,
+        56.21
+      ],
+      "kommuneKode": "0751",
+      "kommuneNavn": "Aarhus",
+      "score": 2
+    },
+    {
+      "name": "Aarhus C RA",
+      "catchmentCentroid": [
+        10.18,
+        56.16
+      ],
+      "kommuneKode": "0751",
+      "kommuneNavn": "Aarhus",
+      "score": 1
+    },
+    {
+      "name": "Randers RA",
+      "catchmentCentroid": [
+        10.04,
+        56.46
+      ],
+      "kommuneKode": "0730",
+      "kommuneNavn": "Randers",
+      "score": 0
+    },
+    {
+      "name": "Viborg RA",
+      "catchmentCentroid": [
+        9.4057,
+        56.45
+      ],
+      "kommuneKode": "0791",
+      "kommuneNavn": "Viborg",
+      "score": 1
+    },
+    {
+      "name": "Silkeborg RA",
+      "catchmentCentroid": [
+        9.57,
+        56.16
+      ],
+      "kommuneKode": "0740",
+      "kommuneNavn": "Silkeborg",
+      "score": 0
+    },
+    {
+      "name": "Herning RA",
+      "catchmentCentroid": [
+        8.975,
+        56.135
+      ],
+      "kommuneKode": "0657",
+      "kommuneNavn": "Herning",
+      "score": 0
+    },
+    {
+      "name": "Esbjerg RA",
+      "catchmentCentroid": [
+        8.47,
+        55.47
+      ],
+      "kommuneKode": "0561",
+      "kommuneNavn": "Esbjerg",
+      "score": 1
+    },
+    {
+      "name": "Aalborg Vest RA",
+      "catchmentCentroid": [
+        9.85,
+        57.02
+      ],
+      "kommuneKode": "0851",
+      "kommuneNavn": "Aalborg",
+      "score": 2
+    },
+    {
+      "name": "Aalborg Øst RA",
+      "catchmentCentroid": [
+        10.12,
+        57.05
+      ],
+      "kommuneKode": "0851",
+      "kommuneNavn": "Aalborg",
+      "score": 1
+    },
+    {
+      "name": "Frederikshavn RA",
+      "catchmentCentroid": [
+        10.56,
+        57.44
+      ],
+      "kommuneKode": "0813",
+      "kommuneNavn": "Frederikshavn",
+      "score": 0
+    },
+    {
+      "name": "Holstebro RA",
+      "catchmentCentroid": [
+        8.64,
+        56.36
+      ],
+      "kommuneKode": "0661",
+      "kommuneNavn": "Holstebro",
+      "score": 1
+    },
+    {
+      "name": "Slagelse RA",
+      "catchmentCentroid": [
+        11.36,
+        55.4
+      ],
+      "kommuneKode": "0330",
+      "kommuneNavn": "Slagelse",
+      "score": 0
+    }
+  ]
+}
