@@ -5,8 +5,8 @@ import {
   tool,
   type UIMessage,
 } from "ai";
-import { createGroq } from "@ai-sdk/groq";
 import { z } from "zod";
+import { resolveModel } from "@/lib/model";
 import {
   searchBySubstance,
   getDetail,
@@ -150,17 +150,14 @@ If a tool returns { error: "..." }, note it briefly ("Could not fetch detail for
 VNR <vnr>: <error>") and continue with the products you have. Do not halt.`;
 
 export async function POST(req: Request) {
-  // Read env per-request (not at module load) so a key added to .env.local is
-  // picked up without the stale-module-scope issue across dev HMR reloads.
-  const apiKey = process.env.GROQ_API_KEY?.trim();
-  const modelId = process.env.GROQ_MODEL?.trim() || "llama-3.3-70b-versatile";
+  // Resolve the provider per-request (Gemini default; Groq via AI_PROVIDER=groq).
+  // Per-request rather than module-scope so a key added to .env.local is picked
+  // up without the stale-module issue across dev HMR reloads.
+  const { model, missingKey, keyHint } = resolveModel();
 
-  if (!apiKey) {
+  if (missingKey) {
     return Response.json(
-      {
-        error:
-          "No GROQ_API_KEY set. Add a free key from https://console.groq.com/keys to .env.local",
-      },
+      { error: `NO_KEY: Missing ${keyHint}. Add it to .env.local.` },
       { status: 500 },
     );
   }
@@ -178,8 +175,6 @@ export async function POST(req: Request) {
   const body = await req.json();
   const messages: UIMessage[] = body.messages ?? [];
 
-  const groq = createGroq({ apiKey });
-
   // Server-side fetch budget: a weak model can otherwise loop and call getDetail
   // dozens of times (observed 156), exhausting the token budget and never
   // synthesizing. Cap it and force the model to write from what it has.
@@ -187,7 +182,7 @@ export async function POST(req: Request) {
   const MAX_DETAIL_CALLS = 8;
 
   const result = streamText({
-    model: groq(modelId),
+    model,
     system: SYSTEM,
     messages: await convertToModelMessages(messages),
     maxOutputTokens: 1200,

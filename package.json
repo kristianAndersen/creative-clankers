@@ -10,6 +10,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@ai-sdk/google": "^3.0.83",
     "@ai-sdk/groq": "^3.0.42",
     "@ai-sdk/react": "^3.0.211",
     "ai": "^6.0.209",
