@@ -12,12 +12,51 @@ import {
   getDetail,
   searchByName,
 } from "@/lib/medicinpriser";
+import type {
+  ProduktDetaljer,
+  ProduktSearchItem,
+} from "@/lib/medicinpriser.types";
 import { rateLimit } from "@/lib/ratelimit";
 
 export const maxDuration = 60;
 
 const apiKey = process.env.GROQ_API_KEY?.trim();
 const modelId = process.env.GROQ_MODEL?.trim() || "llama-3.3-70b-versatile";
+
+// Lean projections: tool results re-enter the model context on every step, so we
+// strip them to only what the briefing needs. This keeps a full run well under
+// Groq's free-tier limit (12k tokens/minute) — the full detail records (long
+// Dosering/Indikation free-text) otherwise blow the budget. Dropping the clinical
+// free-text also keeps the model on the economics-only side of the liability line.
+// The 4 price fields + Varenummer are preserved so the UI's price-chip locking works.
+function leanDetail(d: ProduktDetaljer) {
+  return {
+    Navn: d.Navn,
+    Varenummer: d.Varenummer,
+    Firma: d.Firma,
+    Styrke: d.Styrke,
+    Pakning: d.Pakning,
+    PrisPrPakning: d.PrisPrPakning,
+    PrisPrEnhed: d.PrisPrEnhed,
+    AIP: d.AIP,
+    TilskudBeregnesAf: d.TilskudBeregnesAf,
+    TilskudTekst: d.TilskudTekst ?? null,
+    Udgaaet: d.Udgaaet,
+    Substitutioner: (d.Substitutioner ?? []).map((s) => ({
+      Varenummer: s.Varenummer,
+      Navn: s.Navn,
+    })),
+  };
+}
+
+function leanSearch(items: ProduktSearchItem[]) {
+  return items.slice(0, 25).map((p) => ({
+    Navn: p.Navn,
+    Varenummer: p.Varenummer,
+    Styrke: p.Styrke,
+    Pakning: p.Pakning,
+  }));
+}
 
 const SYSTEM = `You are a Danish hospital and regional pharmacy PROCUREMENT assistant.
 Your mandate is economics only — comparative pricing, reimbursement-basis exposure,
@@ -31,6 +70,9 @@ WORKFLOW — follow this sequence exactly for every query:
    Call searchBySubstance with the INN/active-substance name the user provided.
    If the user gave a brand name instead, call searchByName.
    Pick the most specific match as the anchor product and note its Varenummer.
+   IMPORTANT: do NOT call getDetail on multiple search results. Choose exactly ONE
+   anchor from the search list, then proceed to step 2. getDetail is expensive —
+   only the anchor and its Substitutioner entries should ever be fetched.
 
 2. FETCH ANCHOR DETAIL
    Call getDetail with the anchor's Varenummer.
@@ -150,7 +192,7 @@ export async function POST(req: Request) {
         }),
         execute: async ({ stof }) => {
           const r = await searchBySubstance(stof);
-          return r.ok ? r.data : { error: r.error };
+          return r.ok ? leanSearch(r.data) : { error: r.error };
         },
       }),
       getDetail: tool({
@@ -165,7 +207,7 @@ export async function POST(req: Request) {
         }),
         execute: async ({ vnr }) => {
           const r = await getDetail(vnr);
-          return r.ok ? r.data : { error: r.error };
+          return r.ok ? leanDetail(r.data) : { error: r.error };
         },
       }),
       searchByName: tool({
@@ -178,11 +220,22 @@ export async function POST(req: Request) {
         }),
         execute: async ({ navn }) => {
           const r = await searchByName(navn);
-          return r.ok ? r.data : { error: r.error };
+          return r.ok ? leanSearch(r.data) : { error: r.error };
         },
       }),
     },
   });
 
-  return result.toUIMessageStreamResponse();
+  // Surface a readable cause instead of the AI SDK's default masked
+  // "An error occurred." — Groq's free tier enforces a 12k tokens/minute
+  // window, and a demo should explain that rather than fail blankly.
+  return result.toUIMessageStreamResponse({
+    onError: (error) => {
+      const msg = error instanceof Error ? error.message : String(error);
+      if (/tokens per minute|TPM|rate.?limit|too large|\b429\b/i.test(msg)) {
+        return "Groq free-tier rate limit reached (12k tokens/minute). Wait about a minute and try again, or set a higher-tier GROQ_API_KEY.";
+      }
+      return msg || "The substitution agent encountered an error. Please try again.";
+    },
+  });
 }
