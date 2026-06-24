@@ -54,7 +54,7 @@ export const RESUME: Resume = {
     label: "Creative Technologist · Design + Frontend + AI",
     email: "krilleandersen@gmail.com",
     phone: "+45 22 42 04 59",
-    url: "https://creativeclankers.vercel.app",
+    url: "https://creative-clankers.vercel.app",
     summary:
       "Creative technologist with 25+ years across visual design, digital production and frontend engineering — and the rare ability to carry an idea from the first sketch to a shipped product in the browser. Today I drive AI adoption across a development team and work hands-on with AI coding and agent tools every day. My conviction: augment and 10x people with AI — don't replace them. Award-winning creative background (Gold, 2014).",
     location: {
