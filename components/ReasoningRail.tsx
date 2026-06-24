@@ -1,15 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { ProduktDetaljer } from "@/lib/medicinpriser.types";
 
-// Part type as returned by useChat — tool-call parts carry input + output.
-// part.input holds the tool arguments (AI SDK v6 field name — flagged assumption).
 type Part = {
   type: string;
-  state?: string;
-  input?: unknown;
-  output?: unknown;
+  data?: unknown;
 };
 
 type Message = {
@@ -17,47 +12,6 @@ type Message = {
   role: string;
   parts: unknown[];
 };
-
-const TOOL_LABELS: Record<string, string> = {
-  "tool-searchBySubstance": "searchBySubstance",
-  "tool-searchByName": "searchByName",
-  "tool-getDetail": "getDetail",
-};
-
-function summariseOutput(toolType: string, output: unknown): string {
-  if (!output || typeof output !== "object") return "done";
-  const obj = output as Record<string, unknown>;
-
-  if (toolType === "tool-getDetail") {
-    const detail = obj as Partial<ProduktDetaljer>;
-    if (detail.Udgaaet) {
-      return `Fetched ${detail.Navn ?? "product"} — marked Udgaaet, excluding`;
-    }
-    return `Fetched detail for ${detail.Navn ?? "product"}`;
-  }
-
-  if (
-    toolType === "tool-searchBySubstance" ||
-    toolType === "tool-searchByName"
-  ) {
-    const arr = Array.isArray(output) ? output : obj.results;
-    if (Array.isArray(arr)) {
-      return `${arr.length} result${arr.length !== 1 ? "s" : ""}`;
-    }
-  }
-
-  return "done";
-}
-
-function previewInput(input: unknown): string {
-  if (!input || typeof input !== "object") return "";
-  const obj = input as Record<string, unknown>;
-  const val = Object.values(obj)[0];
-  if (typeof val === "string") {
-    return val.length > 32 ? `"${val.slice(0, 32)}…"` : `"${val}"`;
-  }
-  return "";
-}
 
 type RailLine = {
   id: string;
@@ -78,7 +32,7 @@ export function ReasoningRail({
   const drainRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
 
-  // Collect new lines from message parts; dedupe by a stable key.
+  // Collect new lines from data-step parts; dedupe by a stable key.
   useEffect(() => {
     const newLines: RailLine[] = [];
 
@@ -87,33 +41,16 @@ export function ReasoningRail({
       const parts = msg.parts as Part[];
 
       parts.forEach((part, idx) => {
-        const toolLabel = TOOL_LABELS[part.type];
-        if (!toolLabel) return;
+        if (part.type !== "data-step") return;
+        const stepData = part.data as
+          | { dir: "in" | "out"; text: string }
+          | undefined;
+        if (!stepData) return;
 
-        if (part.state === "input-available") {
-          const key = `${msg.id}-${idx}-in`;
-          if (!seenRef.current.has(key)) {
-            seenRef.current.add(key);
-            const preview = previewInput(part.input);
-            newLines.push({
-              id: key,
-              text: `${toolLabel}${preview ? `: ${preview}` : ""}`,
-              dir: "in",
-            });
-          }
-        }
-
-        if (part.state === "output-available") {
-          const key = `${msg.id}-${idx}-out`;
-          if (!seenRef.current.has(key)) {
-            seenRef.current.add(key);
-            const summary = summariseOutput(part.type, part.output);
-            newLines.push({
-              id: key,
-              text: summary,
-              dir: "out",
-            });
-          }
+        const key = `${msg.id}-${idx}`;
+        if (!seenRef.current.has(key)) {
+          seenRef.current.add(key);
+          newLines.push({ id: key, text: stepData.text, dir: stepData.dir });
         }
       });
     }

@@ -7,6 +7,9 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     globals: true,
+    // .advisor-output/ holds gitignored scratch copies (incl. stray test files
+    // whose imports don't resolve there) — never run tests from it.
+    exclude: ['**/node_modules/**', '**/.next/**', '.advisor-output/**'],
   },
   resolve: {
     alias: {

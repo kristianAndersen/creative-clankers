@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import type { ProduktDetaljer } from "@/lib/medicinpriser.types";
+import type { PriceMapEntry } from "@/lib/substitution";
 import { ReasoningRail } from "./ReasoningRail";
 import { ProsePanel } from "./ProsePanel";
 
@@ -11,6 +12,7 @@ type Part = {
   type: string;
   state?: string;
   output?: unknown;
+  data?: unknown;
 };
 
 type Message = {
@@ -36,22 +38,16 @@ export function SubstitutionBriefing() {
   const busy = status === "submitted" || status === "streaming";
   const started = messages.length > 0;
 
-  // Build lockedPrices map by scanning tool-getDetail output-available parts.
+  // Build lockedPrices map by scanning data-prices parts.
   // Re-computed each render (no memo — map grows incrementally, stale reads are safe).
   const lockedPrices = new Map<string, ProduktDetaljer>();
   for (const msg of messages as Message[]) {
     if (msg.role !== "assistant") continue;
     for (const part of msg.parts as Part[]) {
-      if (
-        part.type === "tool-getDetail" &&
-        part.state === "output-available" &&
-        part.output &&
-        typeof part.output === "object"
-      ) {
-        const detail = part.output as ProduktDetaljer;
-        // Key by Varenummer — the stable identifier the sentinel uses.
-        if (detail.Varenummer) {
-          lockedPrices.set(detail.Varenummer, detail);
+      if (part.type === "data-prices" && part.data && typeof part.data === "object") {
+        const priceMap = part.data as Record<string, PriceMapEntry>;
+        for (const [vnr, entry] of Object.entries(priceMap)) {
+          lockedPrices.set(vnr, entry as unknown as ProduktDetaljer);
         }
       }
     }
@@ -62,23 +58,15 @@ export function SubstitutionBriefing() {
     .reverse()
     .find((m) => m.role === "assistant");
   const aParts = (lastAssistant?.parts as Part[]) ?? [];
-  const hasSearchResult = aParts.some(
-    (p) =>
-      (p.type === "tool-searchBySubstance" || p.type === "tool-searchByName") &&
-      p.state === "output-available",
-  );
-  const hasDetailResult = aParts.some(
-    (p) => p.type === "tool-getDetail" && p.state === "output-available",
-  );
+  const hasSteps = aParts.some((p) => p.type === "data-step");
+  const hasPriceData = aParts.some((p) => p.type === "data-prices");
   const hasText = aParts.some((p) => p.type === "text" && (p as { text?: string }).text?.trim());
   const activeStep = !started
     ? -1
-    : hasText
+    : hasText || hasPriceData
     ? 2
-    : hasDetailResult
+    : hasSteps
     ? 1
-    : hasSearchResult
-    ? 0
     : 0;
 
   function handleSubmit(e: React.FormEvent) {
