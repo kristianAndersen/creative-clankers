@@ -8,7 +8,7 @@ import { parseProse, toPlainText, lockLooseNumbers } from '../prose-parser'
 import type { ProseToken } from '../prose-parser'
 
 // ---------------------------------------------------------------------------
-// parseProse
+// parseProse — [PRICE:] sentinels (unchanged)
 // ---------------------------------------------------------------------------
 
 describe('parseProse', () => {
@@ -68,7 +68,103 @@ describe('parseProse', () => {
 })
 
 // ---------------------------------------------------------------------------
-// toPlainText
+// parseProse — [SRC:] sentinels (new branch)
+// ---------------------------------------------------------------------------
+
+describe('parseProse — [SRC:] sentinels', () => {
+  it('single [SRC:] sentinel is parsed into a src token with all four fields', () => {
+    const tokens = parseProse(
+      'I kommunen bor [SRC:dst:folk1a:0101:totalPopulation] borgere.',
+    )
+    const srcTokens = tokens.filter((t) => t.type === 'src')
+    expect(srcTokens).toHaveLength(1)
+    const tok = srcTokens[0]
+    if (tok.type === 'src') {
+      expect(tok.source).toBe('dst')
+      expect(tok.table).toBe('folk1a')
+      expect(tok.kommuneKode).toBe('0101')
+      expect(tok.field).toBe('totalPopulation')
+    }
+  })
+
+  it('src token at start of string is parsed without a leading text token', () => {
+    const tokens = parseProse('[SRC:ssi:wastewater:0101:score] er forhøjet.')
+    const srcTokens = tokens.filter((t) => t.type === 'src')
+    expect(srcTokens).toHaveLength(1)
+    // No leading empty text segment
+    const textTokens = tokens.filter((t) => t.type === 'text' && (t as { text: string }).text.length > 0)
+    expect(textTokens[0]).toMatchObject({ type: 'text', text: ' er forhøjet.' })
+  })
+
+  it('src token at end of string leaves no trailing empty text token', () => {
+    const tokens = parseProse('Temperaturen er [SRC:dmi:weather:0151:meanTempC]')
+    const srcTokens = tokens.filter((t) => t.type === 'src')
+    expect(srcTokens).toHaveLength(1)
+    const tok = srcTokens[0]
+    if (tok.type === 'src') {
+      expect(tok.source).toBe('dmi')
+      expect(tok.table).toBe('weather')
+      expect(tok.kommuneKode).toBe('0151')
+      expect(tok.field).toBe('meanTempC')
+    }
+    // No trailing text token
+    const last = tokens[tokens.length - 1]
+    expect(last.type).toBe('src')
+  })
+
+  it('multiple [SRC:] sentinels from different sources are all parsed in order', () => {
+    const input =
+      'Folketal: [SRC:dst:folk1a:0101:totalPopulation]. Spildevand: [SRC:ssi:wastewater:0101:score]. Temp: [SRC:dmi:weather:0101:meanTempC].'
+    const tokens = parseProse(input)
+    const srcTokens = tokens.filter((t) => t.type === 'src')
+    expect(srcTokens).toHaveLength(3)
+    if (srcTokens[0].type === 'src') expect(srcTokens[0].source).toBe('dst')
+    if (srcTokens[1].type === 'src') expect(srcTokens[1].source).toBe('ssi')
+    if (srcTokens[2].type === 'src') expect(srcTokens[2].source).toBe('dmi')
+  })
+
+  it('eng source is treated like any other source', () => {
+    const tokens = parseProse('Score: [SRC:eng:signal:0751:compositeScore].')
+    const srcTokens = tokens.filter((t) => t.type === 'src')
+    expect(srcTokens).toHaveLength(1)
+    if (srcTokens[0].type === 'src') {
+      expect(srcTokens[0].source).toBe('eng')
+      expect(srcTokens[0].field).toBe('compositeScore')
+    }
+  })
+
+  it('[PRICE:] and [SRC:] sentinels in the same string are both parsed in order', () => {
+    const input =
+      'Pris: [PRICE:052847:PrisPrEnhed]. Folketal: [SRC:dst:folk1a:0101:totalPopulation].'
+    const tokens = parseProse(input)
+    const priceTokens = tokens.filter((t) => t.type === 'price')
+    const srcTokens = tokens.filter((t) => t.type === 'src')
+    expect(priceTokens).toHaveLength(1)
+    expect(srcTokens).toHaveLength(1)
+    // Price appears before src in the string — its token index is lower
+    const priceIdx = tokens.findIndex((t) => t.type === 'price')
+    const srcIdx = tokens.findIndex((t) => t.type === 'src')
+    expect(priceIdx).toBeLessThan(srcIdx)
+  })
+
+  it('malformed [SRC:] with fewer than four segments is not parsed as src token', () => {
+    // Only 3 segments — should remain as plain text
+    const tokens = parseProse('Broken [SRC:dst:folk1a:0101] sentinel')
+    const srcTokens = tokens.filter((t) => t.type === 'src')
+    expect(srcTokens).toHaveLength(0)
+  })
+
+  it('src token preserves kommuneKode with leading zeros', () => {
+    const tokens = parseProse('[SRC:dst:medi1:0101:scriptsPerHundred]')
+    const srcTokens = tokens.filter((t) => t.type === 'src')
+    if (srcTokens[0].type === 'src') {
+      expect(srcTokens[0].kommuneKode).toBe('0101')
+    }
+  })
+})
+
+// ---------------------------------------------------------------------------
+// toPlainText (unchanged [PRICE:] behaviour)
 // ---------------------------------------------------------------------------
 
 describe('toPlainText', () => {
@@ -112,10 +208,20 @@ describe('toPlainText', () => {
     expect(result).not.toContain('null')
     expect(result).not.toContain('undefined')
   })
+
+  it('src tokens render as compact [source:table:kommuneKode:field] reference', () => {
+    const tokens = parseProse('Borgere: [SRC:dst:folk1a:0101:totalPopulation] i alt.')
+    const prices = new Map<string, Record<string, number | null>>()
+    const result = toPlainText(tokens, prices)
+    // src tokens have no backing price map — renders a bracketed reference
+    expect(result).toContain('[dst:folk1a:0101:totalPopulation]')
+    // No raw [SRC:...] notation remains
+    expect(result).not.toMatch(/\[SRC:/)
+  })
 })
 
 // ---------------------------------------------------------------------------
-// lockLooseNumbers
+// lockLooseNumbers (unchanged)
 // ---------------------------------------------------------------------------
 
 describe('lockLooseNumbers', () => {

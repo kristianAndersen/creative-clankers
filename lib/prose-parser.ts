@@ -1,9 +1,18 @@
 /**
- * Pure prose-parsing utilities for the Substitution Briefing Agent.
+ * Pure prose-parsing utilities for the Substitution Briefing Agent and
+ * Sundhedsradar Narrate Agent.
  *
- * Sentinel format: [PRICE:vnr:field]
- *   vnr   — 6-digit varenummer (string, no leading-zero loss since we keep as string)
- *   field — one of: PrisPrPakning, PrisPrEnhed, AIP, TilskudBeregnesAf
+ * Sentinel formats:
+ *
+ *   [PRICE:vnr:field]
+ *     vnr   — 6-digit varenummer (string)
+ *     field — one of: PrisPrPakning, PrisPrEnhed, AIP, TilskudBeregnesAf
+ *
+ *   [SRC:source:table:kommuneKode:field]
+ *     source      — data provider: dst | ssi | dmi | eng
+ *     table       — table/dataset name (e.g. folk1a, medi1, wastewater, weather, signal)
+ *     kommuneKode — 4-digit Danish municipality code (e.g. 0101)
+ *     field       — field name within the dataset (e.g. totalPopulation, score, meanTempC)
  *
  * Public API:
  *   parseProse(text)                   → ProseToken[]
@@ -20,30 +29,47 @@
 
 export type TextToken = { type: 'text'; text: string }
 export type PriceToken = { type: 'price'; vnr: string; field: string }
-export type ProseToken = TextToken | PriceToken
+export type SrcToken = {
+  type: 'src'
+  source: string
+  table: string
+  kommuneKode: string
+  field: string
+}
+export type ProseToken = TextToken | PriceToken | SrcToken
 
 /** PriceData map shape: vnr → { fieldName: number | null } */
 export type PriceData = Record<string, number | null>
 
 // ---------------------------------------------------------------------------
-// Sentinel regex
+// Sentinel regexes
 // ---------------------------------------------------------------------------
 
-const SENTINEL_RE = /\[PRICE:(\w+):(\w+)\]/g
+const PRICE_SENTINEL_SOURCE = /\[PRICE:(\w+):(\w+)\]/g.source
+const SRC_SENTINEL_SOURCE = /\[SRC:([^:\]]+):([^:\]]+):([^:\]]+):([^:\]]+)\]/g.source
+
+// Combined alternation: price sentinels before src sentinels to preserve
+// left-to-right priority when both appear at the same position (impossible in
+// practice, but explicit ordering avoids ambiguity).
+const COMBINED_SENTINEL_RE = new RegExp(
+  `${PRICE_SENTINEL_SOURCE}|${SRC_SENTINEL_SOURCE}`,
+  'g',
+)
 
 // ---------------------------------------------------------------------------
 // parseProse
 // ---------------------------------------------------------------------------
 
 /**
- * Split prose text around [PRICE:vnr:field] sentinels.
- * Returns an ordered array of text and price tokens.
- * Empty text segments are omitted.
+ * Split prose text around [PRICE:vnr:field] and [SRC:source:table:kommuneKode:field]
+ * sentinels. Returns an ordered array of text, price, and src tokens.
+ * Empty text segments are omitted. Backward-compatible: existing [PRICE:] behaviour
+ * and all callers are unaffected by the addition of the SRC branch.
  */
 export function parseProse(text: string): ProseToken[] {
   const tokens: ProseToken[] = []
   let lastIndex = 0
-  const re = new RegExp(SENTINEL_RE.source, 'g')
+  const re = new RegExp(COMBINED_SENTINEL_RE.source, 'g')
   let match: RegExpExecArray | null
 
   while ((match = re.exec(text)) !== null) {
@@ -51,8 +77,21 @@ export function parseProse(text: string): ProseToken[] {
     if (match.index > lastIndex) {
       tokens.push({ type: 'text', text: text.slice(lastIndex, match.index) })
     }
-    // Price token
-    tokens.push({ type: 'price', vnr: match[1], field: match[2] })
+
+    if (match[1] !== undefined) {
+      // PRICE sentinel: groups 1 (vnr) and 2 (field) are defined
+      tokens.push({ type: 'price', vnr: match[1], field: match[2] })
+    } else {
+      // SRC sentinel: groups 3 (source), 4 (table), 5 (kommuneKode), 6 (field)
+      tokens.push({
+        type: 'src',
+        source: match[3],
+        table: match[4],
+        kommuneKode: match[5],
+        field: match[6],
+      })
+    }
+
     lastIndex = match.index + match[0].length
   }
 
@@ -71,6 +110,7 @@ export function parseProse(text: string): ProseToken[] {
 /**
  * Render a token array to plain text for clipboard export.
  * Price tokens are replaced with the raw value from the prices map.
+ * SrcTokens are rendered as "[source:table:kommuneKode:field]" (no data map available).
  * Unmatched VNR or null field value → "?".
  * No markdown, no sentinel notation in output.
  */
@@ -78,6 +118,10 @@ export function toPlainText(tokens: ProseToken[], prices: Map<string, PriceData>
   return tokens
     .map((token) => {
       if (token.type === 'text') return token.text
+      if (token.type === 'src') {
+        // SRC tokens have no backing price map — render as compact reference
+        return `[${token.source}:${token.table}:${token.kommuneKode}:${token.field}]`
+      }
       // price token
       const priceData = prices.get(token.vnr)
       if (!priceData) return '?'
