@@ -197,3 +197,73 @@ body {
     break-inside: avoid;
   }
 }
+
+/* ===== Sundhedsradar additions ===== */
+/* ── 1. Sky-shift — page background tied to tier ────────────────────────── */
+@keyframes sky-shift {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.sundhedsradar-page {
+  transition: background-color 1.2s ease;
+}
+.sundhedsradar-page--rolig     { background-color: var(--color-cream); }
+.sundhedsradar-page--forhoejet { background-color: var(--color-sky); }
+.sundhedsradar-page--hoej      { background-color: var(--color-blush); }
+
+/* ── 2. Sparkline draw-on — stroke-dashoffset animation ─────────────────── */
+@keyframes sparkline-draw {
+  from { stroke-dashoffset: var(--sparkline-length, 200); }
+  to   { stroke-dashoffset: 0; }
+}
+
+.sparkline-path {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: var(--sparkline-length, 200);
+  stroke-dashoffset: var(--sparkline-length, 200);
+  animation: sparkline-draw 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--card-index, 0) * 80ms + 250ms);
+}
+
+/* ── 3. Staggered card entrance ──────────────────────────────────────────── */
+@keyframes card-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.signal-card-enter {
+  animation: card-enter 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--card-index, 0) * 80ms);
+}
+
+/* ── 4. Archive drawer slide-in ──────────────────────────────────────────── */
+@keyframes drawer-slide-in {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+.archive-drawer-open {
+  animation: drawer-slide-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Reduced-motion coverage for new Sundhedsradar classes ───────────────── */
+@media (prefers-reduced-motion: reduce) {
+  /* transition on page background */
+  .sundhedsradar-page {
+    transition: none;
+  }
+  /* sparkline: cancel animation AND reveal the path immediately */
+  .sparkline-path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  /* entrance + drawer: cancel animation, elements appear at rest position */
+  .signal-card-enter,
+  .archive-drawer-open {
+    animation: none;
+  }
+}
