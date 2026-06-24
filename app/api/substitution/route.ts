@@ -108,7 +108,8 @@ where:
   - vnr  = the product's 6-digit Varenummer (string, exactly as returned by the API)
   - field = one of: PrisPrPakning | PrisPrEnhed | AIP | TilskudBeregnesAf
 
-Example (one-shot — follow this pattern precisely):
+Example (one-shot — follow this PATTERN precisely; the VNRs below are ILLUSTRATIVE
+ONLY — never call any tool on them, only use VNRs returned by your own tool calls):
   The cheapest substitute per unit is Metformin "Orion" at [PRICE:052847:PrisPrEnhed],
   versus [PRICE:111955:PrisPrEnhed] for the originator Glucophage.
   The reimbursement basis for the anchor is [PRICE:111955:TilskudBeregnesAf],
@@ -179,6 +180,12 @@ export async function POST(req: Request) {
 
   const groq = createGroq({ apiKey });
 
+  // Server-side fetch budget: a weak model can otherwise loop and call getDetail
+  // dozens of times (observed 156), exhausting the token budget and never
+  // synthesizing. Cap it and force the model to write from what it has.
+  let detailCalls = 0;
+  const MAX_DETAIL_CALLS = 8;
+
   const result = streamText({
     model: groq(modelId),
     system: SYSTEM,
@@ -211,6 +218,11 @@ export async function POST(req: Request) {
             ),
         }),
         execute: async ({ vnr }) => {
+          if (++detailCalls > MAX_DETAIL_CALLS) {
+            return {
+              error: `Detail fetch budget of ${MAX_DETAIL_CALLS} reached. Do NOT call getDetail again — write the briefing now from the data already gathered.`,
+            };
+          }
           const r = await getDetail(vnr);
           return r.ok ? leanDetail(r.data) : { error: r.error };
         },
