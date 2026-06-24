@@ -37,6 +37,17 @@ export const PROJECTS: Project[] = [
     year: "2026",
   },
   {
+    slug: "sundhedsradar",
+    title: "Sundhedsradar",
+    tagline: "Dansk sundhedsvejrudsigt, uge for uge",
+    description:
+      "Et live komposit-signal for alle 98 kommuner — spildevand, receptdata, demografi og vejr foldet til ét risikoniveau. Klik en kommune for 5-årig historik, eller skift til Planlæggertilstand for AI-vejledning skræddersyet til din begivenhed og husstand.",
+    href: "/sundhedsradar",
+    status: "live",
+    tags: ["DST + SSI", "Composite signal", "Streaming UI", "Next.js"],
+    year: "2026",
+  },
+  {
     slug: "advisor",
     title: "Advisor",
     tagline: "The engine behind every demo on this page",
