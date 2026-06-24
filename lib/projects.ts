@@ -8,7 +8,7 @@ export type Project = {
   tagline: string;
   description: string;
   href: string;
-  status: "live";
+  status: "live" | "framework";
   tags: string[];
   year: string;
 };
@@ -34,6 +34,17 @@ export const PROJECTS: Project[] = [
     href: "/substitution",
     status: "live",
     tags: ["Multi-step agent", "Streaming UI", "Tool use", "medicinpriser.dk"],
+    year: "2026",
+  },
+  {
+    slug: "advisor",
+    title: "Advisor",
+    tagline: "The engine behind every demo on this page",
+    description:
+      "A chief-of-staff orchestrator that breaks your request into focused assignments, matches each to the right specialist, runs them in parallel, double-checks the results, and hands you one finished answer. The framework that built the other projects here.",
+    href: "/advisor",
+    status: "framework",
+    tags: ["Multi-agent", "Orchestration", "AI Framework", "Bun / Node.js"],
     year: "2026",
   },
 ];
