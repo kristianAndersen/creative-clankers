@@ -52,7 +52,7 @@ export function isTransient(err: unknown): boolean {
     (typeof e === "string" ? e : "") ||
     anyE?.name ||
     "";
-  return /high demand|overloaded|temporarily|unavailable|503|tokens per (minute|day)|\bTPM\b|\bTPD\b|rate.?limit|too large|\b429\b/i.test(
+  return /high demand|overloaded|temporarily|unavailable|503|tokens per (minute|day)|\bTPM\b|\bTPD\b|rate.?limit|too large|\b429\b|quota|exceeded your|resource.?exhausted|insufficient/i.test(
     msg,
   );
 }

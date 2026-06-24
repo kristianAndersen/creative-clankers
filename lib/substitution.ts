@@ -5,6 +5,15 @@ import type {
   ProduktSearchResult,
 } from './medicinpriser.types'
 
+// Identity fields emitted as data-ranked for deterministic UI table rendering.
+export type RankedRow = {
+  vnr: string
+  Navn: string
+  Firma: string
+  Styrke: string
+  Pakning: string
+}
+
 export type PriceMapEntry = {
   Navn: string
   Varenummer: string

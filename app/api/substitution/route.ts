@@ -59,33 +59,30 @@ Do NOT write "44.50 DKK", "kr. 12,75", "0.45", or any numeric literal anywhere i
 your response. Only [PRICE:vnr:field] sentinels. The UI renders these into formatted
 currency — raw numbers will break the display.
 
+DO NOT WRITE MARKDOWN TABLES. The ranked comparison table is rendered separately by
+the UI from structured data — you must not output any markdown table (no | Rank | ...
+rows). Writing a table will duplicate data and corrupt the display.
+
 OUTPUT STRUCTURE
-Produce these sections in order:
+Produce these sections in order, using ## for section headings:
 
-A. FILTERED SUBSTITUTES (if removed[] is non-empty)
-   For each item in the briefing's "removed" array, write exactly:
-     Filtering: <Navn> marked Udgaaet — removing from ranked set.
-   Omit this section entirely if removed is empty.
+## Filtered Substitutes
+(Only if removed[] is non-empty.) For each item in the briefing's "removed" array,
+write exactly: Filtering: <Navn> marked Udgaaet — removing from ranked set.
+Omit this section entirely if removed is empty.
 
-B. RANKED COMPARISON TABLE
-   One row per product in the "ranked" array (cheapest first by PrisPrEnhed).
-   For each row include: rank, Navn, Firma, Styrke, Pakning,
-   PrisPrEnhed sentinel, PrisPrPakning sentinel.
-   Use a markdown table with headers:
-   | Rank | Produkt | Firma | Styrke | Pakning | Pris/enhed | Pris/pakning |
+## Summary
+One paragraph (3-5 sentences). State which product is cheapest per unit, the spread
+between cheapest and most expensive, and whether the anchor is the procurement-optimal
+choice. Use only [PRICE:vnr:field] sentinels for any figures.
 
-C. SUMMARY PARAGRAPH
-   One paragraph (3-5 sentences). State which product is cheapest per unit, the
-   spread between cheapest and most expensive, and whether the anchor is the
-   procurement-optimal choice. Use only [PRICE:vnr:field] sentinels for any figures.
+## Reimbursement
+If deltaPct in the briefing is non-null and the absolute value is greater than 5,
+write a one-paragraph flag explaining the exposure using [PRICE:vnr:field] sentinels.
+Otherwise write: Reimbursement basis: no material exposure detected.
 
-D. REIMBURSEMENT EXPOSURE FLAG
-   If deltaPct in the briefing is non-null and the absolute value is greater than 5,
-   write a one-paragraph flag explaining the exposure using [PRICE:vnr:field] sentinels.
-   Otherwise write: "Reimbursement basis: no material exposure detected."
-
-E. DISCLAIMER (always last)
-   Clinical substitution decisions require licensed pharmacist review.`;
+## Disclaimer
+Clinical substitution decisions require licensed pharmacist review.`;
 
 const defaultClient: MedicinpriserClient = {
   searchBySubstance,
@@ -125,8 +122,8 @@ function friendlyError(err: unknown): string {
   if (/high demand|overloaded|temporarily|503|unavailable/i.test(msg)) {
     return "RATE_LIMIT: The model is temporarily overloaded (free-tier high demand). Wait a few seconds and try again.";
   }
-  if (/tokens per (minute|day)|\bTPM\b|\bTPD\b|rate.?limit|too large|\b429\b/i.test(msg)) {
-    return "RATE_LIMIT: Free-tier rate limit reached. Wait about a minute, or switch provider via AI_PROVIDER.";
+  if (/tokens per (minute|day)|\bTPM\b|\bTPD\b|rate.?limit|too large|\b429\b|quota|exceeded your|resource.?exhausted|insufficient/i.test(msg)) {
+    return "RATE_LIMIT: Free-tier quota/rate limit reached on all providers. Wait a bit, or switch provider via AI_PROVIDER.";
   }
   return `Substitution agent error: ${msg}`;
 }
@@ -221,6 +218,19 @@ export async function POST(req: Request) {
       // Emit price map for UI chip locking — before synthesis so chips lock
       // regardless of which provider synthesizes.
       writeData("data-prices", briefing.data.priceMap);
+
+      // Emit ranked rows in deterministic order for the UI table.
+      // The UI renders this as an HTML table; the LLM no longer writes section B.
+      writeData(
+        "data-ranked",
+        briefing.data.ranked.map((r) => ({
+          vnr: r.Varenummer,
+          Navn: r.Navn,
+          Firma: r.Firma,
+          Styrke: r.Styrke,
+          Pakning: r.Pakning,
+        })),
+      );
 
       // LLM CALL 2: streaming synthesis — try each provider in chain.
       // Strategy: consume toUIMessageStream() chunk by chunk; buffer pre-text

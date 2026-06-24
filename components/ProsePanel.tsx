@@ -1,17 +1,19 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import type { ProduktDetaljer } from "@/lib/medicinpriser.types";
 import { PriceChip } from "./PriceChip";
-// prose-parser.ts is built by the concurrent foundation agent — import types only.
-// tsc will error on this module path; that is expected until the other agent lands.
-import type { ProseToken } from "@/lib/prose-parser";
+import { MemoTable, rankedToPlainText } from "./MemoTable";
+import type { RankedRow } from "@/lib/substitution";
 import { parseProse, lockLooseNumbers, toPlainText } from "@/lib/prose-parser";
+import { segmentMarkdown } from "@/lib/markdown";
+import type { MdBlock, MdInline } from "@/lib/markdown";
 
 type Part = {
   type: string;
   text?: string;
   state?: string;
+  data?: unknown;
 };
 
 type Message = {
@@ -20,53 +22,70 @@ type Message = {
   parts: unknown[];
 };
 
-// The four price fields the API exposes and the chip knows how to render.
-type PriceField = "PrisPrPakning" | "PrisPrEnhed" | "AIP" | "TilskudBeregnesAf";
-const PRICE_FIELDS: PriceField[] = ["PrisPrPakning", "PrisPrEnhed", "AIP", "TilskudBeregnesAf"];
+function renderInlineSegs(
+  inline: MdInline[],
+  lockedPrices: Map<string, ProduktDetaljer>,
+  streamCaret: boolean,
+  status: string,
+): React.ReactNode[] {
+  return inline.map((seg, i) => {
+    const isLast = streamCaret && i === inline.length - 1;
+    if (seg.kind === "text") {
+      return (
+        <span key={i} className={isLast && status === "streaming" ? "stream-caret" : undefined}>
+          {seg.text}
+        </span>
+      );
+    }
+    if (seg.kind === "bold") {
+      return (
+        <strong key={i} className="font-semibold text-ink">
+          {seg.text}
+        </strong>
+      );
+    }
+    // price token
+    const detail = lockedPrices.get(seg.vnr);
+    if (!detail) {
+      return (
+        <span key={i} className="inline-flex items-center gap-1 rounded bg-grey-5 px-1.5 py-0.5 text-sm font-medium text-grey-3">
+          …
+        </span>
+      );
+    }
+    const value = (detail as Record<string, unknown>)[seg.field] as number | null | undefined;
+    return <PriceChip key={i} value={value ?? null} field={seg.field} />;
+  });
+}
 
-function renderTokens(
-  tokens: ProseToken[],
+function renderBlocks(
+  blocks: MdBlock[],
   lockedPrices: Map<string, ProduktDetaljer>,
   isLastPart: boolean,
   status: string,
 ): React.ReactNode[] {
-  const nodes: React.ReactNode[] = [];
-
-  tokens.forEach((token, i) => {
-    if (token.type === "text") {
-      const isLast = isLastPart && i === tokens.length - 1;
-      const streaming = status === "streaming";
-      nodes.push(
-        <span
-          key={i}
-          className={isLast && streaming ? "stream-caret" : undefined}
-        >
-          {token.text}
-        </span>
-      );
-    } else if (token.type === "price") {
-      const detail = lockedPrices.get(token.vnr);
-      if (!detail) {
-        // Tool result not yet in lockedPrices — placeholder; re-renders when map fills.
-        nodes.push(
-          <span key={i} className="inline-flex items-center gap-1 rounded bg-grey-5 px-1.5 py-0.5 text-sm font-medium text-grey-3">
-            …
-          </span>
-        );
-      } else {
-        const value = (detail as Record<string, unknown>)[token.field] as number | null | undefined;
-        nodes.push(
-          <PriceChip
-            key={i}
-            value={value ?? null}
-            field={token.field}
-          />
+  return blocks.map((block, bi) => {
+    const isLastBlock = isLastPart && bi === blocks.length - 1;
+    if (block.kind === "heading") {
+      if (block.level === 2) {
+        return (
+          <h2 key={bi} className="font-display text-[0.9rem] font-semibold text-ink">
+            {renderInlineSegs(block.inline, lockedPrices, false, status)}
+          </h2>
         );
       }
+      return (
+        <h3 key={bi} className="font-display text-[0.85rem] font-semibold text-ink-soft">
+          {renderInlineSegs(block.inline, lockedPrices, false, status)}
+        </h3>
+      );
     }
+    return (
+      <p key={bi} className="whitespace-pre-line text-[0.97rem] leading-relaxed text-ink-soft">
+        {renderInlineSegs(block.inline, lockedPrices, isLastBlock, status)}
+      </p>
+    );
   });
-
-  return nodes;
 }
 
 export function ProsePanel({
@@ -80,8 +99,6 @@ export function ProsePanel({
   status: string;
   copyRef: React.MutableRefObject<string>;
 }) {
-  const allTextRef = useRef<string>("");
-
   // Build accumulated plain-text for clipboard on each render.
   useEffect(() => {
     let plain = "";
@@ -90,22 +107,26 @@ export function ProsePanel({
       const parts = msg.parts as Part[];
       for (const part of parts) {
         if (part.type === "text" && part.text) {
-          // Tokenise and convert to plain text stripping sentinels.
-          // Cast Map type — PriceData in prose-parser is structurally compatible
-          // but typed narrowly as {[key:string]:number}; ProduktDetaljer has extra
-          // string fields. Cast at call boundary until foundation agent lands.
           const tokens = parseProse(part.text);
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           plain += toPlainText(tokens, lockedPrices as unknown as any);
+        } else if (part.type === "data-ranked" && Array.isArray(part.data)) {
+          const rows = part.data as RankedRow[];
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          plain += rankedToPlainText(rows, lockedPrices as unknown as any);
+          plain += "\n\n";
         }
       }
     }
-    allTextRef.current = plain;
     copyRef.current = plain;
   });
 
-  // Collect assistant text parts to render.
-  const assistantParts: { partIdx: number; msgId: string; text: string }[] = [];
+  // Collect renderable items in message part order (data-ranked then text).
+  type RenderItem =
+    | { kind: "text"; msgId: string; partIdx: number; text: string }
+    | { kind: "ranked"; msgId: string; partIdx: number; rows: RankedRow[] };
+
+  const items: RenderItem[] = [];
   let lastMsgId: string | null = null;
 
   for (const msg of messages) {
@@ -114,44 +135,45 @@ export function ProsePanel({
     const parts = msg.parts as Part[];
     parts.forEach((part, idx) => {
       if (part.type === "text" && part.text) {
-        assistantParts.push({ msgId: msg.id, partIdx: idx, text: part.text });
+        items.push({ kind: "text", msgId: msg.id, partIdx: idx, text: part.text });
+      } else if (part.type === "data-ranked" && Array.isArray(part.data)) {
+        items.push({ kind: "ranked", msgId: msg.id, partIdx: idx, rows: part.data as RankedRow[] });
       }
     });
   }
 
-  if (assistantParts.length === 0) {
-    return null;
-  }
+  if (items.length === 0) return null;
+
+  // Index of last text item — streaming caret attaches to its last inline segment.
+  const lastTextIdx = items.reduce((acc, item, i) => (item.kind === "text" ? i : acc), -1);
 
   return (
     <div className="space-y-4">
-      {assistantParts.map(({ msgId, partIdx, text }, renderIdx) => {
-        const isLast =
-          renderIdx === assistantParts.length - 1 && msgId === lastMsgId;
-
-        // Primary path: sentinel parse.
-        let tokens = parseProse(text);
-
-        // Fallback path: numeric post-pass for when the LLM skips sentinels.
-        // lockLooseNumbers injects [PRICE:vnr:field] sentinels into the raw
-        // text wherever a bare number matches a known API price; we then
-        // re-parse that string so the injected sentinels become price tokens.
-        // Applied only when parseProse found zero sentinels (avoids
-        // double-chipping a value that was already sentineled).
-        const hasSentinels = tokens.some((t) => t.type === "price");
-        if (!hasSentinels && lockedPrices.size > 0) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          const withSentinels = lockLooseNumbers(text, lockedPrices as unknown as any);
-          tokens = parseProse(withSentinels);
+      {items.map((item, renderIdx) => {
+        if (item.kind === "ranked") {
+          return (
+            <MemoTable
+              key={`${item.msgId}-${item.partIdx}`}
+              ranked={item.rows}
+              lockedPrices={lockedPrices}
+            />
+          );
         }
 
+        const isLast = renderIdx === lastTextIdx && item.msgId === lastMsgId;
+
+        // Fallback: inject sentinels for bare numbers when LLM skips them.
+        let processedText = item.text;
+        if (!processedText.includes("[PRICE:") && lockedPrices.size > 0) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          processedText = lockLooseNumbers(processedText, lockedPrices as unknown as any);
+        }
+        const blocks = segmentMarkdown(processedText);
+
         return (
-          <p
-            key={`${msgId}-${partIdx}`}
-            className="whitespace-pre-wrap text-[0.97rem] leading-relaxed text-ink-soft"
-          >
-            {renderTokens(tokens, lockedPrices, isLast, status)}
-          </p>
+          <div key={`${item.msgId}-${item.partIdx}`} className="space-y-3">
+            {renderBlocks(blocks, lockedPrices, isLast, status)}
+          </div>
         );
       })}
     </div>
