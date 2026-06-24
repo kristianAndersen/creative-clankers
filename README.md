@@ -7,7 +7,7 @@ story — and then hands the decision back to you.
 > **The belief it demonstrates:** AI does the heavy lifting; the person keeps
 > the judgment. Augment people with AI — don't replace them.
 
-🔗 **Live:** _add your Vercel URL here after deploying_
+🔗 **Live:** https://creativeclankers.vercel.app
 🛠 **Stack:** Next.js (App Router) · Vercel AI SDK · Groq (free tier) · bespoke generative UI
 
 ---
