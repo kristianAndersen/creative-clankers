@@ -157,13 +157,13 @@ export function SubstitutionBriefing() {
             started ? "grid" : "hidden"
           } gap-6 md:grid-cols-[38%_1fr]`}
         >
-          {/* left: reasoning rail */}
-          <div className="canvas-grid min-h-[200px] overflow-hidden rounded-xl border border-grey-4 bg-paper p-5">
+          {/* left: reasoning rail — scrolls within a fixed height */}
+          <div className="canvas-grid min-h-[200px] max-h-[60vh] overflow-y-auto rounded-xl border border-grey-4 bg-paper p-5">
             <ReasoningRail messages={messages as Message[]} status={status} />
           </div>
 
-          {/* right: prose panel */}
-          <div className="min-h-[200px] rounded-xl border border-grey-4 bg-paper p-5">
+          {/* right: prose panel — scrolls within a fixed height */}
+          <div className="min-h-[200px] max-h-[60vh] overflow-y-auto rounded-xl border border-grey-4 bg-paper p-5">
             {hasText ? (
               <ProsePanel
                 messages={messages as Message[]}
