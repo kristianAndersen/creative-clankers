@@ -12,9 +12,12 @@ export default function Home() {
         >
           Creative Clankers
         </span>
-        <span className="hidden text-xs uppercase tracking-[0.18em] text-white/45 sm:block">
-          Portfolio · Kristian Andersen
-        </span>
+        <Link
+          href="/cv"
+          className="text-xs uppercase tracking-[0.18em] text-white/45 transition-colors hover:text-white"
+        >
+          Résumé
+        </Link>
       </header>
 
       {/* ── Hero — the black wordmark moment ── */}

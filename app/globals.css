@@ -160,3 +160,29 @@ body {
     animation: none;
   }
 }
+
+/* ── Résumé print (clean single-column PDF) ── */
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm 14mm;
+  }
+  /* The page body is cream on screen; force white in print so no beige shows
+     below the résumé where the content block ends. */
+  html, body {
+    background: #fff !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .cv-root {
+    font-size: 10.5pt;
+    background: #fff;
+    min-height: 0; /* don't force a full viewport height into the PDF */
+  }
+  /* Keep individual entries together; NEVER whole sections (that caused the
+     page-tall Experience block to jump to page 2 and leave a huge gap). */
+  .cv-entry {
+    break-inside: avoid;
+  }
+}
