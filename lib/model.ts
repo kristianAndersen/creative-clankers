@@ -24,31 +24,99 @@ export type ResolvedModel = {
   keyHint: string;
 };
 
-export function resolveModel(): ResolvedModel {
-  const provider = (process.env.AI_PROVIDER?.trim() || "google").toLowerCase();
+export type ModelChainEntry = {
+  provider: "google" | "groq";
+  modelId: string;
+  model: LanguageModel;
+};
 
-  if (provider === "groq") {
-    const apiKey = process.env.GROQ_API_KEY?.trim();
-    const modelId = process.env.GROQ_MODEL?.trim() || "llama-3.3-70b-versatile";
-    const groq = createGroq({ apiKey });
+/**
+ * Classify an error as transient (503/high-demand/429/rate-limit) — safe to
+ * retry on the next provider. Auth errors (401/403/invalid key) and bad-request
+ * (400) are NOT transient and must surface immediately.
+ */
+export function isTransient(err: unknown): boolean {
+  // Unwrap wrapped error objects (e.g. { error: originalErr })
+  const e =
+    err && typeof err === "object" && "error" in err
+      ? (err as { error: unknown }).error
+      : err;
+  const anyE = e as {
+    message?: string;
+    responseBody?: string;
+    name?: string;
+  } | null;
+  const msg =
+    anyE?.message ||
+    anyE?.responseBody ||
+    (typeof e === "string" ? e : "") ||
+    anyE?.name ||
+    "";
+  return /high demand|overloaded|temporarily|unavailable|503|tokens per (minute|day)|\bTPM\b|\bTPD\b|rate.?limit|too large|\b429\b/i.test(
+    msg,
+  );
+}
+
+function buildGoogleEntry(): ModelChainEntry | null {
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY?.trim();
+  if (!apiKey) return null;
+  const modelId = process.env.GOOGLE_MODEL?.trim() || "gemini-2.5-flash";
+  return { provider: "google", modelId, model: google(modelId) };
+}
+
+function buildGroqEntry(): ModelChainEntry | null {
+  const apiKey = process.env.GROQ_API_KEY?.trim();
+  if (!apiKey) return null;
+  const modelId = process.env.GROQ_MODEL?.trim() || "llama-3.3-70b-versatile";
+  const groq = createGroq({ apiKey });
+  return { provider: "groq", modelId, model: groq(modelId) };
+}
+
+/**
+ * Returns an ordered array of available providers (primary first, filtered by
+ * key presence). Primary is determined by AI_PROVIDER env (default "google").
+ * Each entry is ready to use as a LanguageModel.
+ */
+export function resolveModelChain(): ModelChainEntry[] {
+  const primary = (process.env.AI_PROVIDER?.trim() || "google").toLowerCase();
+  const order: Array<"google" | "groq"> =
+    primary === "groq" ? ["groq", "google"] : ["google", "groq"];
+  return order
+    .map<ModelChainEntry | null>((p) =>
+      p === "groq" ? buildGroqEntry() : buildGoogleEntry(),
+    )
+    .filter((e): e is ModelChainEntry => e !== null);
+}
+
+export function resolveModel(): ResolvedModel {
+  const chain = resolveModelChain();
+  const preferredProvider = (
+    (process.env.AI_PROVIDER?.trim() || "google").toLowerCase()
+  ) as "google" | "groq";
+
+  if (chain.length === 0) {
+    const isGroq = preferredProvider === "groq";
+    const modelId = isGroq
+      ? process.env.GROQ_MODEL?.trim() || "llama-3.3-70b-versatile"
+      : process.env.GOOGLE_MODEL?.trim() || "gemini-2.5-flash";
     return {
-      provider: "groq",
+      provider: preferredProvider,
       modelId,
-      model: groq(modelId),
-      missingKey: !apiKey,
-      keyHint: "GROQ_API_KEY (free key from console.groq.com/keys)",
+      // dummy model instance — missingKey: true so route returns early before using it
+      model: isGroq
+        ? createGroq({ apiKey: "" })(modelId)
+        : google(modelId),
+      missingKey: true,
+      keyHint: isGroq
+        ? "GROQ_API_KEY (free key from console.groq.com/keys)"
+        : "GOOGLE_GENERATIVE_AI_API_KEY (free key from aistudio.google.com/apikey)",
     };
   }
 
-  // default: Google Gemini. The @ai-sdk/google provider reads
-  // GOOGLE_GENERATIVE_AI_API_KEY from the environment automatically.
-  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY?.trim();
-  const modelId = process.env.GOOGLE_MODEL?.trim() || "gemini-2.5-flash";
+  const first = chain[0];
   return {
-    provider: "google",
-    modelId,
-    model: google(modelId),
-    missingKey: !apiKey,
-    keyHint: "GOOGLE_GENERATIVE_AI_API_KEY (free key from aistudio.google.com/apikey)",
+    ...first,
+    missingKey: false,
+    keyHint: "",
   };
 }

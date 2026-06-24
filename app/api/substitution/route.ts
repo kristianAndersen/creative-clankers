@@ -7,7 +7,7 @@ import {
   type UIMessageChunk,
 } from "ai";
 import { z } from "zod";
-import { resolveModel } from "@/lib/model";
+import { resolveModel, resolveModelChain, isTransient } from "@/lib/model";
 import {
   searchBySubstance,
   getDetail,
@@ -132,9 +132,10 @@ function friendlyError(err: unknown): string {
 }
 
 export async function POST(req: Request) {
-  const { model, missingKey, keyHint, provider } = resolveModel();
+  const chain = resolveModelChain();
 
-  if (missingKey) {
+  if (chain.length === 0) {
+    const { keyHint } = resolveModel();
     return Response.json(
       { error: `NO_KEY: Missing ${keyHint}. Add it to .env.local.` },
       { status: 500 },
@@ -159,22 +160,38 @@ export async function POST(req: Request) {
     execute: async ({ writer }) => {
       const writeData = (type: string, data: unknown) =>
         (writer.write as (p: unknown) => void)({ type, data });
-      const mergeStream = (s: unknown) =>
-        (writer.merge as (s: unknown) => void)(s);
 
-      // LLM CALL 1: extract intent from query
+      // LLM CALL 1: extract intent from query — try each provider in chain,
+      // fall back on transient errors, then use the clean-query fallback.
       let intent: { substance?: string; brandName?: string; strength?: string } =
         { substance: query, brandName: query };
       try {
-        const extraction = await generateObject({
-          model,
-          schema: intentSchema,
-          prompt: `Extract the drug search intent from this pharmacy query: "${query}"`,
-          maxOutputTokens: 200,
-          maxRetries: 4, // ride out transient free-tier overloads
-          ...(provider === "groq" ? { temperature: 0.1 } : {}),
-        });
-        intent = extraction.object;
+        let intentResult: { object: typeof intent } | null = null;
+
+        for (let ci = 0; ci < chain.length; ci++) {
+          const entry = chain[ci];
+          const isLast = ci === chain.length - 1;
+          try {
+            intentResult = await generateObject({
+              model: entry.model,
+              schema: intentSchema,
+              prompt: `Extract the drug search intent from this pharmacy query: "${query}"`,
+              maxOutputTokens: 200,
+              maxRetries: 4,
+              ...(entry.provider === "groq" ? { temperature: 0.1 } : {}),
+            });
+            break; // success — stop trying other providers
+          } catch (err) {
+            if (!isLast && isTransient(err)) {
+              continue; // transient + not last: try next provider
+            }
+            throw err; // non-transient or last provider: surface to outer catch
+          }
+        }
+
+        if (intentResult) {
+          intent = intentResult.object;
+        }
       } catch {
         // Intent extraction failed — derive a clean search term from the raw
         // query (strip strengths/units and intent words) so the deterministic
@@ -201,24 +218,100 @@ export async function POST(req: Request) {
         );
       }
 
-      // Emit price map for UI chip locking
+      // Emit price map for UI chip locking — before synthesis so chips lock
+      // regardless of which provider synthesizes.
       writeData("data-prices", briefing.data.priceMap);
 
-      // LLM CALL 2: synthesise briefing prose (no tools)
-      const result = streamText({
-        model,
-        system: SYNTHESIS_SYSTEM,
-        prompt: `Assembled briefing data:\n${JSON.stringify(briefing.data)}\n\nWrite the pharmaceutical procurement memo.`,
-        maxOutputTokens: 1200,
-        maxRetries: 4, // ride out transient free-tier overloads ("high demand")
-        ...(provider === "groq" ? { temperature: 0.3 } : {}),
-      });
+      // LLM CALL 2: streaming synthesis — try each provider in chain.
+      // Strategy: consume toUIMessageStream() chunk by chunk; buffer pre-text
+      // chunks until first text-delta (safe to commit to this provider); if an
+      // error chunk arrives before any text-delta and the error is transient,
+      // discard the buffer and retry on the next provider.
+      const synthesisPrompt = `Assembled briefing data:\n${JSON.stringify(briefing.data)}\n\nWrite the pharmaceutical procurement memo.`;
 
-      mergeStream(
-        (result.toUIMessageStream as (o: unknown) => unknown)({
-          onError: friendlyError,
-        }),
-      );
+      let synthLastError: unknown;
+      let synthDone = false;
+
+      for (let ci = 0; ci < chain.length && !synthDone; ci++) {
+        const entry = chain[ci];
+        const isLast = ci === chain.length - 1;
+
+        const result = streamText({
+          model: entry.model,
+          system: SYNTHESIS_SYSTEM,
+          prompt: synthesisPrompt,
+          maxOutputTokens: 1200,
+          maxRetries: 4,
+          ...(entry.provider === "groq" ? { temperature: 0.3 } : {}),
+        });
+
+        let textStarted = false;
+        // Buffer chunks that arrive before the first text-delta so we can
+        // discard them cleanly if a pre-text error forces a provider switch.
+        const preTextBuffer: UIMessageChunk[] = [];
+        let capturedError: unknown;
+        let shouldFallback = false;
+
+        for await (const chunk of result.toUIMessageStream({
+          onError: (err) => {
+            capturedError = err;
+            return friendlyError(err);
+          },
+        })) {
+          const chunkType = (chunk as { type: string }).type;
+
+          if (chunkType === "error") {
+            // Error before any text — check if we can fall back.
+            if (!textStarted && !isLast && isTransient(capturedError)) {
+              synthLastError = capturedError;
+              shouldFallback = true;
+              break;
+            }
+            // Non-recoverable: flush buffer then emit error chunk.
+            for (const b of preTextBuffer) {
+              (writer.write as (c: unknown) => void)(b);
+            }
+            (writer.write as (c: unknown) => void)(chunk);
+            synthDone = true;
+            break;
+          }
+
+          if (!textStarted) {
+            if (chunkType === "text-delta") {
+              textStarted = true;
+              // Provider is producing text — commit buffered chunks first.
+              for (const b of preTextBuffer) {
+                (writer.write as (c: unknown) => void)(b);
+              }
+              preTextBuffer.length = 0;
+              (writer.write as (c: unknown) => void)(chunk);
+            } else {
+              preTextBuffer.push(chunk as UIMessageChunk);
+            }
+          } else {
+            (writer.write as (c: unknown) => void)(chunk);
+          }
+        }
+
+        if (shouldFallback) continue;
+
+        if (!synthDone) {
+          // Normal completion — flush any remaining pre-text buffer (e.g.
+          // start/finish chunks on an empty response) and mark done.
+          for (const b of preTextBuffer) {
+            (writer.write as (c: unknown) => void)(b);
+          }
+          synthDone = true;
+        }
+      }
+
+      // All providers exhausted with transient errors — surface final error.
+      if (!synthDone) {
+        (writer.write as (c: unknown) => void)({
+          type: "error",
+          errorText: friendlyError(synthLastError),
+        });
+      }
     },
     onError: friendlyError,
   });
