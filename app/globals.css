@@ -154,9 +154,20 @@ body {
   border: 0;
 }
 
+/* Price chip lock pulse — signals "this number came from the API, not the model" */
+@keyframes lockPulse {
+  0%   { opacity: 0.5; transform: scale(0.95); }
+  60%  { opacity: 1;   transform: scale(1.03); }
+  100% { opacity: 1;   transform: scale(1); }
+}
+.lock-pulse {
+  animation: lockPulse 150ms ease-out both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .rise-in, .step-active, .stream-caret::after,
-  .brand-gradient-bg, .brand-gradient-text, .brand-gradient-rule {
+  .brand-gradient-bg, .brand-gradient-text, .brand-gradient-rule,
+  .lock-pulse {
     animation: none;
   }
 }
