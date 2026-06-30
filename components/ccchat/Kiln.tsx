@@ -34,8 +34,7 @@ export default function Kiln() {
           }}
         >
           Claims arrive as drafts. They are challenged. Answered. Then fired —
-          weight and color hardening the moment consensus lands. That transition
-          is the only animation on this page, and it always means the same thing.
+          weight and color hardening the moment consensus lands.
         </p>
 
         <div
@@ -111,17 +110,6 @@ export default function Kiln() {
           </div>
         </div>
 
-        <p
-          style={{
-            fontFamily: "var(--ccc-font-sans)",
-            fontSize: "0.78rem",
-            color: "var(--ccc-ash)",
-            marginTop: "1.5rem",
-            fontStyle: "italic",
-          }}
-        >
-          Live cycle · 8 seconds · CSS-only
-        </p>
       </div>
     </section>
   );

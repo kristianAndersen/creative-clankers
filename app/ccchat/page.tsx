@@ -91,11 +91,7 @@ export default function CCChatPage() {
       </header>
 
       <main>
-        {/* ══════════════════════════════════════════════════
-            01 — DECISION HERO
-            Full-width verdict. Amber on deep charcoal.
-            The output first, not the pitch.
-            ══════════════════════════════════════════════════ */}
+        {/* 01 — DECISION HERO */}
         <section
           style={{
             padding: "clamp(80px, 14vw, 160px) 1.5rem clamp(64px, 10vw, 120px)",
@@ -162,11 +158,7 @@ export default function CCChatPage() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════════════════
-            02 — STRATIGRAPHY
-            Three agent contributions rendered as geological layers.
-            Each stratum scroll-reveals with translateY only.
-            ══════════════════════════════════════════════════ */}
+        {/* 02 — STRATIGRAPHY */}
         <section
           style={{
             padding: "clamp(64px, 10vw, 120px) 1.5rem",
@@ -216,15 +208,10 @@ export default function CCChatPage() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════════════════
-            03 — THE KILN (CSS-only firing animation)
-            ══════════════════════════════════════════════════ */}
+        {/* 03 — THE KILN */}
         <Kiln />
 
-        {/* ══════════════════════════════════════════════════
-            04 — WHAT CCCHAT DOES
-            Three inline feature callouts. No cards. No icons.
-            ══════════════════════════════════════════════════ */}
+        {/* 04 — WHAT CCCHAT DOES */}
         <section
           id="what-it-does"
           style={{
@@ -268,20 +255,13 @@ export default function CCChatPage() {
           </div>
         </section>
 
-        {/* ══════════════════════════════════════════════════
-            05 — APP IN ACTION
-            ══════════════════════════════════════════════════ */}
+        {/* 05 — APP IN ACTION */}
         <AppInAction />
 
-        {/* ══════════════════════════════════════════════════
-            06 — LIVE SESSION EXCERPT
-            ══════════════════════════════════════════════════ */}
+        {/* 06 — LIVE SESSION EXCERPT */}
         <SessionExcerpt />
 
-        {/* ══════════════════════════════════════════════════
-            07 — CTA
-            Amber. Barlow Condensed 900. Centered.
-            ══════════════════════════════════════════════════ */}
+        {/* 07 — CTA */}
         <section
           style={{
             background: "var(--ccc-surface)",
