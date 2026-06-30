@@ -1,0 +1,349 @@
+/* All rules scoped to .ccc-root — cannot bleed into other routes */
+
+.ccc-root {
+  /* ── Palette ── */
+  --ccc-bg:         #1C1208;
+  --ccc-surface:    #2A1D10;
+  --ccc-parchment:  #F5EFE0;
+  --ccc-amber:      #E8A214;
+  --ccc-rust:       #C1440E;
+  --ccc-pale-gold:  #D4A574;
+  --ccc-sienna:     #7A3B1E;
+  --ccc-ash:        #8C7A68;
+  --ccc-rule:       rgba(245, 239, 224, 0.10);
+  --ccc-rule-warm:  rgba(232, 162, 20, 0.20);
+
+  /* ── Font vars — next/font injects via variable prop ── */
+  --ccc-font-condensed: var(--ccc-font-condensed-var, 'Barlow Condensed', 'Arial Narrow', sans-serif);
+  --ccc-font-serif:     var(--ccc-font-serif-var, Georgia, serif);
+  --ccc-font-mono:      var(--ccc-font-mono-var, 'Courier New', monospace);
+  --ccc-font-sans:      var(--ccc-font-sans-var, system-ui, sans-serif);
+
+  background:  var(--ccc-bg);
+  color:       var(--ccc-parchment);
+  font-family: var(--ccc-font-sans);
+  min-height:  100vh;
+}
+
+/* ══════════════════════════════════════════════════════
+   KILN — CSS-only firing animation
+   8-second cycle, runs infinitely
+   Three agent contributions: draft → fired
+   ══════════════════════════════════════════════════════ */
+
+/* Agent A claim: appears first, fires ~58% into cycle */
+@keyframes kiln-a {
+  0%           { opacity: 0; }
+  5%           { opacity: 0.7; font-weight: 300; color: var(--ccc-ash);
+                 filter: blur(0.3px); font-style: italic; }
+  55%          { opacity: 0.7; font-weight: 300; color: var(--ccc-ash);
+                 filter: blur(0.3px); font-style: italic; }
+  63%          { opacity: 1;   font-weight: 800; color: var(--ccc-amber);
+                 filter: blur(0);    font-style: normal; letter-spacing: -0.02em; }
+  88%          { opacity: 1;   font-weight: 800; color: var(--ccc-amber);
+                 filter: blur(0); }
+  96%          { opacity: 0; }
+  100%         { opacity: 0; }
+}
+
+/* Agent B challenge: appears ~25% in, fires ~68% */
+@keyframes kiln-b {
+  0%, 20%      { opacity: 0; }
+  26%          { opacity: 0.7; font-weight: 300; color: var(--ccc-ash);
+                 filter: blur(0.3px); font-style: italic; }
+  63%          { opacity: 0.7; font-weight: 300; color: var(--ccc-ash);
+                 filter: blur(0.3px); font-style: italic; }
+  70%          { opacity: 1;   font-weight: 800; color: var(--ccc-amber);
+                 filter: blur(0);    font-style: normal; letter-spacing: -0.02em; }
+  88%          { opacity: 1; }
+  96%          { opacity: 0; }
+  100%         { opacity: 0; }
+}
+
+/* Agent C evidence: appears ~42% in, fires ~75% */
+@keyframes kiln-c {
+  0%, 38%      { opacity: 0; }
+  44%          { opacity: 0.7; font-weight: 300; color: var(--ccc-ash);
+                 filter: blur(0.3px); font-style: italic; }
+  70%          { opacity: 0.7; font-weight: 300; color: var(--ccc-ash);
+                 filter: blur(0.3px); font-style: italic; }
+  77%          { opacity: 1;   font-weight: 800; color: var(--ccc-amber);
+                 filter: blur(0);    font-style: normal; letter-spacing: -0.02em; }
+  88%          { opacity: 1; }
+  96%          { opacity: 0; }
+  100%         { opacity: 0; }
+}
+
+/* Parent amber flash on firing */
+@keyframes kiln-flash {
+  0%, 59%      { background: var(--ccc-surface); }
+  62%          { background: rgba(232, 162, 20, 0.07); }
+  67%          { background: var(--ccc-surface); }
+  100%         { background: var(--ccc-surface); }
+}
+
+.ccc-root .ccc-kiln-claim {
+  display:        block;
+  font-family:    var(--ccc-font-condensed);
+  font-size:      clamp(0.9rem, 1.8vw, 1.1rem);
+  text-transform: uppercase;
+  animation:      kiln-a 8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  min-height:     1.4em;
+}
+
+.ccc-root .ccc-kiln-challenge {
+  display:     block;
+  font-family: var(--ccc-font-serif);
+  font-size:   clamp(0.9rem, 1.8vw, 1.05rem);
+  animation:   kiln-b 8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  min-height:  1.4em;
+}
+
+.ccc-root .ccc-kiln-evidence {
+  display:     block;
+  font-family: var(--ccc-font-mono);
+  font-size:   clamp(0.78rem, 1.5vw, 0.9rem);
+  animation:   kiln-c 8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  min-height:  1.4em;
+}
+
+.ccc-root .ccc-kiln-panel {
+  animation: kiln-flash 8s ease-in-out infinite;
+  padding:   1.5rem;
+  border:    1px solid var(--ccc-rule-warm);
+}
+
+/* ══════════════════════════════════════════════════════
+   STRATIGRAPHY — scroll reveal (transform only, no opacity)
+   ══════════════════════════════════════════════════════ */
+
+.ccc-root .ccc-stratum {
+  transform:  translateY(24px);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ccc-root .ccc-stratum.is-visible {
+  transform: translateY(0);
+}
+
+/* ── Agent borders + hover ── */
+
+.ccc-root .ccc-stratum-a {
+  border-left:  2px solid var(--ccc-rust);
+  padding-left: 1.5rem;
+  transition:   border-left-width 150ms ease, letter-spacing 150ms ease;
+}
+.ccc-root .ccc-stratum-a:hover {
+  border-left-width: 4px;
+  letter-spacing:    0.01em;
+}
+
+.ccc-root .ccc-stratum-b {
+  border-left:  2px solid var(--ccc-pale-gold);
+  padding-left: 1.5rem;
+  transition:   border-left-width 150ms ease, letter-spacing 150ms ease;
+}
+.ccc-root .ccc-stratum-b:hover {
+  border-left-width: 4px;
+  letter-spacing:    0.01em;
+}
+
+.ccc-root .ccc-stratum-c {
+  border-left:  2px solid var(--ccc-sienna);
+  padding-left: 1.5rem;
+  transition:   border-left-width 150ms ease, letter-spacing 150ms ease;
+}
+.ccc-root .ccc-stratum-c:hover {
+  border-left-width: 4px;
+  letter-spacing:    0.01em;
+}
+
+/* ══════════════════════════════════════════════════════
+   SESSION EXCERPT — 3-agent type system
+   ══════════════════════════════════════════════════════ */
+
+.ccc-root .ccc-session-line-a {
+  font-family:    var(--ccc-font-condensed);
+  font-weight:    300;
+  text-transform: uppercase;
+  color:          var(--ccc-rust);
+  border-left:    2px solid var(--ccc-rust);
+  padding-left:   1rem;
+  margin-bottom:  1rem;
+  transition:     border-left-width 150ms ease, letter-spacing 150ms ease;
+}
+.ccc-root .ccc-session-line-a:hover {
+  border-left-width: 4px;
+  letter-spacing:    0.01em;
+}
+
+.ccc-root .ccc-session-line-b {
+  font-family:   var(--ccc-font-serif);
+  font-weight:   400;
+  font-style:    italic;
+  color:         var(--ccc-pale-gold);
+  border-left:   2px solid var(--ccc-pale-gold);
+  padding-left:  1rem;
+  margin-bottom: 1rem;
+  transition:    border-left-width 150ms ease, letter-spacing 150ms ease;
+}
+.ccc-root .ccc-session-line-b:hover {
+  border-left-width: 4px;
+  letter-spacing:    0.01em;
+}
+
+.ccc-root .ccc-session-line-c {
+  font-family:   var(--ccc-font-mono);
+  font-weight:   400;
+  color:         var(--ccc-sienna);
+  border-left:   2px solid var(--ccc-sienna);
+  padding-left:  1rem;
+  margin-bottom: 1rem;
+  font-size:     0.9em;
+  transition:    border-left-width 150ms ease, letter-spacing 150ms ease;
+}
+.ccc-root .ccc-session-line-c:hover {
+  border-left-width: 4px;
+  letter-spacing:    0.01em;
+}
+
+.ccc-root .ccc-session-verdict {
+  font-family:    var(--ccc-font-condensed);
+  font-weight:    800;
+  color:          var(--ccc-amber);
+  letter-spacing: -0.02em;
+  border-left:    3px solid var(--ccc-amber);
+  padding-left:   1rem;
+  margin-top:     1.5rem;
+  text-transform: uppercase;
+}
+
+.ccc-root .ccc-session-agent-label {
+  display:        block;
+  font-family:    var(--ccc-font-sans);
+  font-size:      0.65rem;
+  font-weight:    500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color:          var(--ccc-ash);
+  margin-bottom:  0.25rem;
+}
+
+/* ══════════════════════════════════════════════════════
+   APP IN ACTION — image frames
+   ══════════════════════════════════════════════════════ */
+
+.ccc-root .ccc-img-frame {
+  border:          1px solid var(--ccc-rule-warm);
+  border-radius:   3px;
+  overflow:        hidden;
+  background:      var(--ccc-surface);
+  min-height:      220px;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+}
+
+.ccc-root .ccc-img-frame img {
+  width:   100%;
+  height:  auto;
+  display: block;
+}
+
+.ccc-root .ccc-img-placeholder {
+  padding:     2rem 1.5rem;
+  text-align:  center;
+  color:       var(--ccc-ash);
+  font-family: var(--ccc-font-mono);
+  font-size:   0.8rem;
+  line-height: 1.6;
+}
+
+.ccc-root .ccc-img-placeholder .ccc-placeholder-label {
+  display:      block;
+  font-family:  var(--ccc-font-condensed);
+  font-weight:  700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color:        var(--ccc-rust);
+  margin-bottom: 0.5rem;
+  font-size:    0.75rem;
+}
+
+.ccc-root figcaption {
+  font-family:   var(--ccc-font-sans);
+  font-size:     0.78rem;
+  color:         var(--ccc-ash);
+  margin-top:    0.75rem;
+  line-height:   1.5;
+}
+
+/* ══════════════════════════════════════════════════════
+   UTILITY
+   ══════════════════════════════════════════════════════ */
+
+.ccc-root .ccc-section-label {
+  display:        block;
+  font-family:    var(--ccc-font-sans);
+  font-size:      0.65rem;
+  font-weight:    500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color:          var(--ccc-ash);
+  margin-bottom:  0.5rem;
+}
+
+.ccc-root .ccc-rule {
+  display:    block;
+  width:      48px;
+  height:     2px;
+  background: var(--ccc-amber);
+  border:     none;
+  margin:     0 0 1rem;
+}
+
+.ccc-root .ccc-verdict-badge {
+  display:        inline-flex;
+  align-items:    center;
+  gap:            0.5rem;
+  font-family:    var(--ccc-font-sans);
+  font-size:      0.7rem;
+  font-weight:    500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          var(--ccc-ash);
+  border:         1px solid var(--ccc-rule-warm);
+  padding:        0.3rem 0.75rem;
+  border-radius:  2px;
+  margin-bottom:  1.5rem;
+}
+
+.ccc-root .ccc-verdict-badge::before {
+  content:       '';
+  display:       inline-block;
+  width:         6px;
+  height:        6px;
+  border-radius: 50%;
+  background:    var(--ccc-amber);
+}
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .ccc-root .ccc-kiln-claim,
+  .ccc-root .ccc-kiln-challenge,
+  .ccc-root .ccc-kiln-evidence {
+    animation: none;
+    opacity:   1;
+    color:     var(--ccc-parchment);
+    filter:    none;
+    font-style: normal;
+  }
+  .ccc-root .ccc-kiln-panel {
+    animation: none;
+  }
+  .ccc-root .ccc-stratum {
+    transform: none;
+    transition: none;
+  }
+}

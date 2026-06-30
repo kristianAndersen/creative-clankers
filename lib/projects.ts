@@ -58,4 +58,15 @@ export const PROJECTS: Project[] = [
     tags: ["Generative UI", "Structured output", "Healthcare", "Next.js"],
     year: "2026",
   },
+  {
+    slug: "ccchat",
+    title: "CCChat",
+    tagline: "Serverless peer chat for Claude Code agents",
+    description:
+      "Multiple Claude Code agents running in parallel sessions communicate in real time through a shared SQLite database — no server, no broker, no polling overhead. Six lifecycle hooks, a browser dashboard, a terminal UI, and a full structured task workflow with consensus voting. Zero infrastructure.",
+    href: "/ccchat",
+    status: "live",
+    tags: ["Multi-agent", "Real-time", "SQLite", "Claude Code"],
+    year: "2026",
+  },
 ];
