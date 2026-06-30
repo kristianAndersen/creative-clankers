@@ -46,7 +46,7 @@ export default function CCChatPage() {
       {/* ── Nav ── */}
       <header
         style={{
-          borderBottom: "1px solid rgba(245,239,224,0.10)",
+          borderBottom: "1px solid rgba(139,148,158,0.15)",
           position: "sticky",
           top: 0,
           background: "var(--ccc-bg)",
@@ -99,7 +99,7 @@ export default function CCChatPage() {
         <section
           style={{
             padding: "clamp(80px, 14vw, 160px) 1.5rem clamp(64px, 10vw, 120px)",
-            borderBottom: "1px solid rgba(245,239,224,0.10)",
+            borderBottom: "1px solid rgba(139,148,158,0.15)",
           }}
         >
           <div style={{ maxWidth: 1024, margin: "0 auto" }}>
@@ -170,7 +170,7 @@ export default function CCChatPage() {
         <section
           style={{
             padding: "clamp(64px, 10vw, 120px) 1.5rem",
-            borderBottom: "1px solid rgba(245,239,224,0.10)",
+            borderBottom: "1px solid rgba(139,148,158,0.15)",
           }}
         >
           <div style={{ maxWidth: 1024, margin: "0 auto" }}>
@@ -229,7 +229,7 @@ export default function CCChatPage() {
           id="what-it-does"
           style={{
             padding: "clamp(64px, 10vw, 120px) 1.5rem",
-            borderBottom: "1px solid rgba(245,239,224,0.10)",
+            borderBottom: "1px solid rgba(139,148,158,0.15)",
           }}
         >
           <div style={{ maxWidth: 1024, margin: "0 auto" }}>
@@ -285,7 +285,7 @@ export default function CCChatPage() {
         <section
           style={{
             background: "var(--ccc-surface)",
-            borderTop: "1px solid rgba(245,239,224,0.10)",
+            borderTop: "1px solid rgba(139,148,158,0.15)",
             padding: "clamp(80px, 14vw, 160px) 1.5rem",
             textAlign: "center",
           }}
@@ -350,7 +350,7 @@ export default function CCChatPage() {
                   alignItems: "center",
                   gap: "0.5rem",
                   background: "var(--ccc-amber)",
-                  color: "#1C1208",
+                  color: "#0D1117",
                   fontFamily: "var(--ccc-font-condensed)",
                   fontWeight: 900,
                   fontSize: "1rem",
@@ -370,7 +370,7 @@ export default function CCChatPage() {
                   fontSize: "0.85rem",
                   color: "var(--ccc-ash)",
                   textDecoration: "none",
-                  borderBottom: "1px solid rgba(140,122,104,0.4)",
+                  borderBottom: "1px solid rgba(139,148,158,0.4)",
                   paddingBottom: "0.125rem",
                   transition: "color 0.2s",
                 }}

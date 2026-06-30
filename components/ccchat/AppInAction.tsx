@@ -35,8 +35,8 @@ export default function AppInAction() {
     <section
       style={{
         background: "var(--ccc-surface)",
-        borderTop: "1px solid rgba(245,239,224,0.10)",
-        borderBottom: "1px solid rgba(245,239,224,0.10)",
+        borderTop: "1px solid rgba(139,148,158,0.15)",
+        borderBottom: "1px solid rgba(139,148,158,0.15)",
         padding: "clamp(64px, 10vw, 120px) 1.5rem",
       }}
     >

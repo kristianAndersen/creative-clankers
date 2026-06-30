@@ -4,7 +4,7 @@ export default function SessionExcerpt() {
   return (
     <section
       style={{
-        borderTop: "1px solid rgba(245,239,224,0.10)",
+        borderTop: "1px solid rgba(139,148,158,0.15)",
         padding: "clamp(64px, 10vw, 120px) 1.5rem",
         background: "var(--ccc-bg)",
       }}
@@ -42,7 +42,7 @@ export default function SessionExcerpt() {
           style={{
             maxWidth: 720,
             background: "var(--ccc-surface)",
-            border: "1px solid rgba(245,239,224,0.10)",
+            border: "1px solid rgba(139,148,158,0.15)",
             borderRadius: 3,
             padding: "clamp(1.5rem, 4vw, 2.5rem)",
           }}
