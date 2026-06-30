@@ -1,5 +1,3 @@
-/* SYNTHETIC session transcript — illustrative only, not from any real log */
-
 export default function SessionExcerpt() {
   return (
     <section
@@ -120,7 +118,7 @@ export default function SessionExcerpt() {
             fontStyle: "italic",
           }}
         >
-          Illustrative session — the format is exact, the content is synthetic.
+          A representative exchange.
         </p>
       </div>
     </section>
