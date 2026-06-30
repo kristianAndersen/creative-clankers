@@ -28,7 +28,7 @@ function makeValidBrief(input: string): VisitBrief {
       { kind: "confidence", include: true, emphasis: "muted", order: 3 },
       { kind: "evidence", include: false, emphasis: "muted", order: 4 },
     ],
-    summary: { text: "Patient presents with hypertension and reported headaches." },
+    summary: { text: "Patient presents with hypertension and reported headaches.", keyPoints: [] },
     concerns: [{ text: "Hypertension follow-up", emphasis: "primary" }],
     suggestedQuestions: [
       { text: "How long have you had headaches?", context: "Frequency matters for triage" },
@@ -41,6 +41,7 @@ function makeValidBrief(input: string): VisitBrief {
         sectionRef: "concerns",
       },
     ],
+    reason: "",
   };
 }
 
@@ -57,7 +58,7 @@ describe("generateVisitBrief", () => {
     expect(result.status).toBe("uncertain");
     expect(result.sections.every((s) => !s.include)).toBe(true);
     expect(typeof result.reason).toBe("string");
-    expect(result.reason!.length).toBeGreaterThan(0);
+    expect(result.reason.length).toBeGreaterThan(0);
   });
 
   it("(2) every provider throws transient error returns fallback — not a throw", async () => {
@@ -72,7 +73,7 @@ describe("generateVisitBrief", () => {
 
     expect(result.status).toBe("uncertain");
     expect(typeof result.reason).toBe("string");
-    expect(result.reason!.length).toBeGreaterThan(0);
+    expect(result.reason.length).toBeGreaterThan(0);
     // generate should have been called for each provider
     expect(fakeGenerate).toHaveBeenCalledTimes(2);
   });

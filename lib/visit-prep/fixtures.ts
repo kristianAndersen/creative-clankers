@@ -67,9 +67,11 @@ export const fixture1: VisitBrief = {
     },
     {
       text: "What lifestyle changes would most reduce my cardiovascular risk given my family history?",
+      context: "",
     },
     {
       text: "What should I expect at the cardiology review next month?",
+      context: "",
     },
   ],
   confidence: {
@@ -105,6 +107,7 @@ export const fixture1: VisitBrief = {
       sectionRef: "evidence",
     },
   ],
+  reason: "",
 };
 
 // ── Fixture 2: Sparse low-confidence 'stacked' layout ───────────────────────
@@ -121,6 +124,7 @@ export const fixture2: VisitBrief = {
   ],
   summary: {
     text: "A follow-up appointment is noted for Thursday regarding knee pain. No further clinical context is available.",
+    keyPoints: [],
   },
   concerns: [],
   suggestedQuestions: [
@@ -130,6 +134,7 @@ export const fixture2: VisitBrief = {
     },
     {
       text: "Is there anything I should bring or prepare for the appointment?",
+      context: "",
     },
   ],
   confidence: {
@@ -150,6 +155,7 @@ export const fixture2: VisitBrief = {
       sectionRef: "summary",
     },
   ],
+  reason: "",
 };
 
 // ── Fixture 3: Uncertain/fallback state ─────────────────────────────────────
@@ -166,6 +172,7 @@ export const fixture3: VisitBrief = {
   ],
   summary: {
     text: "The pasted input did not contain recognizable medical or appointment context.",
+    keyPoints: [],
   },
   concerns: [],
   suggestedQuestions: [],
@@ -228,9 +235,11 @@ export const fixture4: VisitBrief = {
     },
     {
       text: "What pain management options will be available after the surgery?",
+      context: "",
     },
     {
       text: "Is there anything I need to do before the anesthesiologist consult?",
+      context: "",
     },
   ],
   confidence: {
@@ -266,4 +275,5 @@ export const fixture4: VisitBrief = {
       sectionRef: "questions",
     },
   ],
+  reason: "",
 };

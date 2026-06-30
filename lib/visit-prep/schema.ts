@@ -57,12 +57,13 @@ export const ConcernSchema = z.object({
   emphasis: EmphasisSchema.describe("Visual weight for this concern"),
 });
 
+// All fields required (no .optional()) — mandatory for Groq strict-mode constrained decoding,
+// which rejects schemas with optional object properties.
 export const SuggestedQuestionSchema = z.object({
   text: z.string().describe("A question to raise with the care provider"),
   context: z
     .string()
-    .optional()
-    .describe("Brief explanation of why this question matters"),
+    .describe("Brief explanation of why this question matters; '' when not applicable"),
 });
 
 export const ConfidenceIndicatorSchema = z.object({
@@ -72,14 +73,15 @@ export const ConfidenceIndicatorSchema = z.object({
     .describe("Brief explanation of what limits or supports this confidence level"),
 });
 
+// All fields required (no .optional()) — mandatory for Groq strict-mode constrained decoding,
+// which rejects schemas with optional object properties.
 export const VisitSummarySchema = z.object({
   text: z
     .string()
     .describe("One to three sentence overview of the visit context"),
   keyPoints: z
     .array(z.string())
-    .optional()
-    .describe("Up to 4 key points for quick scanning"),
+    .describe("Up to 4 key points for quick scanning; [] when none"),
 });
 
 // ── Top-level VisitBrief — flat fixed object, no nested unions ───────────────
@@ -90,7 +92,10 @@ export const VisitSummarySchema = z.object({
 //
 // When status === 'uncertain': sections should all have include: false, arrays
 // may be empty, and 'reason' MUST be populated to explain the fallback.
-// When status === 'ok': all fields carry meaningful content and reason is absent.
+// When status === 'ok': all fields carry meaningful content and reason is ''.
+//
+// All fields are required (no .optional()) — mandatory for Groq strict-mode
+// constrained decoding, which rejects schemas that have optional object properties.
 
 export const VisitBriefSchema = z.object({
   status: z
@@ -131,9 +136,8 @@ export const VisitBriefSchema = z.object({
 
   reason: z
     .string()
-    .optional()
     .describe(
-      "Populated when status='uncertain': explains why a full brief could not be produced",
+      "'' when status='ok'; populated when status='uncertain' to explain why a full brief could not be produced",
     ),
 });
 

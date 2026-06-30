@@ -7,9 +7,16 @@ import type { LanguageModel } from "ai";
  *
  * Default is Google Gemini 2.5 Flash — the most generous genuinely-free tier
  * for a tool-calling agent (15 RPM / 1M TPM / 1500 RPD) with frontier-level
- * instruction following. Groq (llama-3.3-70b-versatile) is the fallback: set
- * AI_PROVIDER=groq to switch, no code change. (Groq's 8b-instant was too weak —
- * it looped and ignored the workflow; never use it for this agent.)
+ * instruction following. Groq (openai/gpt-oss-120b) is the fallback: set
+ * AI_PROVIDER=groq to switch, no code change. (Groq's 8b-instant and the smaller
+ * gpt-oss-20b were too weak for the enum-nested VisitBrief schema — they emit
+ * out-of-enum values that Groq strict mode rejects; do not use them for
+ * structured output here.)
+ *
+ * Groq default is openai/gpt-oss-120b (free-tier, 30 RPM / 8K TPM) because it
+ * reliably produces generateObject json_schema structured outputs in strict mode.
+ * llama-3.3-70b-versatile does NOT support json_schema and throws "This model
+ * does not support response format json_schema" on every generateObject call.
  *
  * Override the model id per provider with GOOGLE_MODEL / GROQ_MODEL.
  * Keys: GOOGLE_GENERATIVE_AI_API_KEY (aistudio.google.com) or GROQ_API_KEY.
@@ -67,7 +74,7 @@ function buildGoogleEntry(): ModelChainEntry | null {
 function buildGroqEntry(): ModelChainEntry | null {
   const apiKey = process.env.GROQ_API_KEY?.trim();
   if (!apiKey) return null;
-  const modelId = process.env.GROQ_MODEL?.trim() || "llama-3.3-70b-versatile";
+  const modelId = process.env.GROQ_MODEL?.trim() || "openai/gpt-oss-120b";
   const groq = createGroq({ apiKey });
   return { provider: "groq", modelId, model: groq(modelId) };
 }
@@ -97,7 +104,7 @@ export function resolveModel(): ResolvedModel {
   if (chain.length === 0) {
     const isGroq = preferredProvider === "groq";
     const modelId = isGroq
-      ? process.env.GROQ_MODEL?.trim() || "llama-3.3-70b-versatile"
+      ? process.env.GROQ_MODEL?.trim() || "openai/gpt-oss-120b"
       : process.env.GOOGLE_MODEL?.trim() || "gemini-2.5-flash";
     return {
       provider: preferredProvider,

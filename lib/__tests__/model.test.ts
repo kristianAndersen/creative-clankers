@@ -177,9 +177,9 @@ describe("resolveModelChain", () => {
     expect(chain[0].modelId).toBe("gemini-2.5-flash");
   });
 
-  it("defaults groq modelId to llama-3.3-70b-versatile", () => {
+  it("defaults groq modelId to openai/gpt-oss-120b", () => {
     process.env.GROQ_API_KEY = "fake-groq-key";
     const chain = resolveModelChain();
-    expect(chain[0].modelId).toBe("llama-3.3-70b-versatile");
+    expect(chain[0].modelId).toBe("openai/gpt-oss-120b");
   });
 });

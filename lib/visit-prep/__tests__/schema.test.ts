@@ -39,7 +39,7 @@ describe("VisitBriefSchema — fixtures", () => {
     if (result.success) {
       expect(result.data.status).toBe("uncertain");
       expect(typeof result.data.reason).toBe("string");
-      expect(result.data.reason!.length).toBeGreaterThan(0);
+      expect(result.data.reason.length).toBeGreaterThan(0);
     }
   });
 
@@ -162,7 +162,7 @@ describe("VisitBriefSchema — uncertain/fallback shape", () => {
       status: "uncertain",
       layout: "minimal",
       sections: [],
-      summary: { text: "Input was not parseable as visit context." },
+      summary: { text: "Input was not parseable as visit context.", keyPoints: [] },
       concerns: [],
       suggestedQuestions: [],
       confidence: { level: "low", rationale: "No parseable input." },
@@ -173,16 +173,17 @@ describe("VisitBriefSchema — uncertain/fallback shape", () => {
     expect(result.success).toBe(true);
   });
 
-  it("uncertain payload without reason field still validates (reason is optional)", () => {
+  it("uncertain payload with empty-string reason validates (reason required, empty string ok)", () => {
     const uncertain = {
       status: "uncertain",
       layout: "minimal",
       sections: [],
-      summary: { text: "Input was not parseable." },
+      summary: { text: "Input was not parseable.", keyPoints: [] },
       concerns: [],
       suggestedQuestions: [],
       confidence: { level: "low", rationale: "No parseable input." },
       evidence: [],
+      reason: "",
     };
     const result = VisitBriefSchema.safeParse(uncertain);
     expect(result.success).toBe(true);

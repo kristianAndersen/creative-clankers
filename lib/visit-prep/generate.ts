@@ -25,7 +25,7 @@ export function buildFallback(reason: string): VisitBrief {
       { kind: "questions", include: false, emphasis: "muted", order: 3 },
       { kind: "confidence", include: false, emphasis: "muted", order: 4 },
     ],
-    summary: { text: "" },
+    summary: { text: "", keyPoints: [] },
     concerns: [],
     suggestedQuestions: [],
     confidence: { level: "low", rationale: "Fallback — see reason field." },
@@ -59,6 +59,12 @@ OUTPUT DISCIPLINE:
 You output exactly one JSON object conforming to the VisitBrief schema. No prose, no \
 explanations, no markdown. Only the JSON object.
 
+FIELD EMPTY-VALUE SEMANTICS:
+All fields are required. Use empty values when content is not applicable:
+  - reason: '' (empty string) when status is 'ok'; a helpful explanation when status is 'uncertain'
+  - summary.keyPoints: [] (empty array) when there are no key points to highlight
+  - suggestedQuestions[*].context: '' (empty string) when no background explanation is needed
+
 LAYOUT SELECTION:
 Choose the layout template that best fits the input density:
   - "dashboard": rich multi-section input with several clinical details
@@ -74,7 +80,7 @@ UNCERTAIN/FALLBACK:
 If the pasted text does not contain recognisable appointment or clinical context (e.g. it is \
 gibberish, unrelated prose, or too sparse to organise), set status: "uncertain", set all \
 sections to include: false, populate reason with a helpful explanation, and return minimal \
-safe values for all other fields.`;
+safe values for all other fields. When status is 'ok', set reason to '' (empty string).`;
 
 function buildUserPrompt(input: string): string {
   return `Please prepare a visit brief from the following patient notes.
@@ -88,10 +94,13 @@ Generate a VisitBrief JSON object. Remember:
 2. Every evidence.sourceQuote must be a verbatim substring of the text inside <PATIENT_INPUT> \
 above — copy the exact words, do not paraphrase.
 3. If the input is too sparse or unrecognisable, return status: "uncertain" with a helpful \
-reason explaining what kind of content would be useful.
+reason explaining what kind of content would be useful. When status is 'ok', set reason to '' \
+(empty string).
 4. Select a layout that matches the information density.
 5. Set include: false for any section you have no meaningful content for.
-6. Suggest questions the clinician should consider asking the patient during the visit.`;
+6. Suggest questions the clinician should consider asking the patient during the visit.
+7. Set summary.keyPoints to [] when there are no key points to highlight; set \
+suggestedQuestions[*].context to '' when no background explanation is needed for a question.`;
 }
 
 const defaultGenerate: GenerateFn = async (opts) => {
@@ -124,7 +133,10 @@ export async function generateVisitBrief(
         schema: VisitBriefSchema,
         prompt,
         maxRetries: 4,
-        ...(entry.provider === "groq" ? { temperature: 0.1 } : {}),
+        // Groq strict mode (constrained decoding) requires all-required schema — no providerOptions override needed.
+        ...(entry.provider === "groq"
+          ? { temperature: 0.1 }
+          : {}),
       });
       break;
     } catch (err) {
