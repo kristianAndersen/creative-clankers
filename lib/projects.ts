@@ -58,4 +58,15 @@ export const PROJECTS: Project[] = [
     tags: ["Multi-agent", "Orchestration", "AI Framework", "Bun / Node.js"],
     year: "2026",
   },
+  {
+    slug: "visit-prep",
+    title: "Visit Prep Assistant",
+    tagline: "Generative UI for clinicians",
+    description:
+      "Paste a patient note and the model returns a structured, source-anchored visit brief — then chooses its own layout and which cards to show. Every claim links to a verbatim quote from the input, confidence is shown honestly, and a human approves, edits, or regenerates. A demonstration of generative interfaces with built-in oversight, not a diagnostic tool.",
+    href: "/visit-prep",
+    status: "live",
+    tags: ["Generative UI", "Structured output", "Healthcare", "Next.js"],
+    year: "2026",
+  },
 ];
