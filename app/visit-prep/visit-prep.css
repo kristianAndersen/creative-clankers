@@ -1,0 +1,118 @@
+/* ── Visit Prep route tokens & base styles ─────────────────────────────────
+   Scoped to .vp-root — does not affect any other route.
+   Palette derived from laeger.dk / Yngre Læger design language.          */
+
+.vp-root {
+  /* Design tokens */
+  --color-primary: #099A93;
+  --color-primary-hover: #22A49E;
+  --color-secondary: #D8F5F3;
+  --color-bg: #F2F2F2;
+  --color-surface: #FFFFFF;
+  --color-text: #1A2328;
+  --color-text-muted: #484F53;
+  --color-heading: #000000;
+  --color-border: #1A2328;
+  --radius: 0;
+
+  background-color: #F2F2F2;
+  color: #1A2328;
+  font-family: var(--font-vp-body, -apple-system, "Helvetica Neue", Arial, system-ui, sans-serif);
+  font-size: 16px;
+  line-height: 1.375;
+  min-height: 100vh;
+}
+
+/* Monospace headings — signature move of the design system */
+.vp-root h1,
+.vp-root h2,
+.vp-root h3,
+.vp-root h4 {
+  font-family: var(--font-vp-display, "Roboto Mono", "Courier New", monospace);
+  color: #000000;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+/* Shared card shell: white surface, 1px dark hairline, 0 radius, no shadow */
+.vp-card {
+  background: #FFFFFF;
+  border: 1px solid #1A2328;
+  border-radius: 0;
+}
+
+/* Teal accent variant — used for primary-emphasis sections */
+.vp-card-accent {
+  border-left: 4px solid #099A93;
+}
+
+/* Primary action button — solid teal, white text, square */
+.vp-btn-primary {
+  background: #099A93;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 150ms;
+}
+.vp-btn-primary:hover:not(:disabled) {
+  background: #22A49E;
+}
+.vp-btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Secondary / ghost button — white bg, dark hairline border, square */
+.vp-btn-secondary {
+  background: #FFFFFF;
+  color: #1A2328;
+  border: 1px solid #1A2328;
+  border-radius: 0;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 150ms;
+}
+.vp-btn-secondary:hover:not(:disabled) {
+  background: #D8F5F3;
+}
+
+/* Arrow-link pattern — prefix → underline on hover */
+.vp-arrow-link {
+  color: #1A2328;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+.vp-arrow-link::before {
+  content: "→ ";
+}
+.vp-arrow-link:hover {
+  text-decoration: underline;
+}
+
+/* Horizontal rule / divider — 1px dark hairline */
+.vp-rule {
+  height: 1px;
+  background: #1A2328;
+  border: 0;
+}
+
+/* Approved state chip */
+.vp-approved-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #D8F5F3;
+  color: #099A93;
+  padding: 0.375rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0;
+  border: 1px solid #099A93;
+}

@@ -10,14 +10,15 @@ export function EvidenceList({ evidence, emphasis = "normal" }: EvidenceListProp
   return (
     <div
       className={[
-        "rounded-xl border border-grey-4 bg-paper",
-        emphasis === "primary" ? "border-l-4 border-l-brand p-6" : emphasis === "muted" ? "p-3" : "p-4",
+        "bg-white",
+        emphasis === "primary" ? "border-l-4 border-l-[#099A93] p-6" : emphasis === "muted" ? "p-3" : "p-4",
       ].join(" ")}
+      style={{ border: "1px solid #1A2328" }}
     >
       <h3
         className={[
-          "font-semibold text-ink",
-          emphasis === "primary" ? "mb-4 text-lg" : emphasis === "muted" ? "mb-2 text-xs uppercase tracking-widest text-grey-2" : "mb-3 text-base",
+          "text-[#000000]",
+          emphasis === "primary" ? "mb-4 text-lg" : emphasis === "muted" ? "mb-2 text-xs uppercase tracking-widest text-[#484F53]" : "mb-3 text-base",
         ].join(" ")}
       >
         Source Evidence
@@ -25,8 +26,10 @@ export function EvidenceList({ evidence, emphasis = "normal" }: EvidenceListProp
       <ul className="space-y-4">
         {evidence.map((item, i) => (
           <li key={i} className="text-sm">
-            <p className="font-medium text-ink">{item.claim}</p>
-            <blockquote className="mt-1.5 rounded-r-lg border-l-4 border-brand bg-sky px-4 py-2 italic text-ink-soft">
+            <p className="font-medium text-[#1A2328]">{item.claim}</p>
+            <blockquote
+              className="mt-1.5 border-l-4 border-l-[#099A93] bg-[#D8F5F3] px-4 py-2 italic text-[#484F53]"
+            >
               &ldquo;{item.sourceQuote}&rdquo;
             </blockquote>
           </li>

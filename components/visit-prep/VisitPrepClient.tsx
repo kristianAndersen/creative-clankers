@@ -115,13 +115,18 @@ export function VisitPrepClient() {
       <Disclaimer />
 
       {/* Mode toggle */}
-      <div className="flex items-center gap-2 rounded-xl border border-grey-4 bg-paper p-1 w-fit">
+      <div
+        className="flex items-center gap-2 bg-white p-1 w-fit"
+        style={{ border: "1px solid #1A2328" }}
+      >
         <button
           type="button"
           onClick={() => setViewMode("generate")}
           className={[
-            "rounded-lg px-4 py-1.5 text-sm font-medium transition-colors",
-            viewMode === "generate" ? "bg-brand text-white shadow-sm" : "text-grey-2 hover:text-ink",
+            "px-4 py-1.5 text-sm font-medium transition-colors",
+            viewMode === "generate"
+              ? "bg-[#099A93] text-white"
+              : "text-[#484F53] hover:text-[#1A2328]",
           ].join(" ")}
         >
           Generate
@@ -130,8 +135,10 @@ export function VisitPrepClient() {
           type="button"
           onClick={() => setViewMode("samples")}
           className={[
-            "rounded-lg px-4 py-1.5 text-sm font-medium transition-colors",
-            viewMode === "samples" ? "bg-brand text-white shadow-sm" : "text-grey-2 hover:text-ink",
+            "px-4 py-1.5 text-sm font-medium transition-colors",
+            viewMode === "samples"
+              ? "bg-[#099A93] text-white"
+              : "text-[#484F53] hover:text-[#1A2328]",
           ].join(" ")}
         >
           Sample states
@@ -148,10 +155,10 @@ export function VisitPrepClient() {
                 type="button"
                 onClick={() => setSampleIdx(i)}
                 className={[
-                  "rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors",
+                  "border px-3 py-1.5 text-xs font-medium transition-colors",
                   sampleIdx === i
-                    ? "border-brand bg-sky text-brand"
-                    : "border-grey-4 text-grey-2 hover:border-grey-3 hover:text-ink",
+                    ? "border-[#099A93] bg-[#D8F5F3] text-[#099A93]"
+                    : "border-[#1A2328] text-[#484F53] hover:text-[#1A2328]",
                 ].join(" ")}
               >
                 {label}
@@ -167,16 +174,17 @@ export function VisitPrepClient() {
           {/* Input area */}
           <div className="space-y-3">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <label htmlFor="patient-note" className="text-sm font-medium text-ink">
+              <label htmlFor="patient-note" className="text-sm font-medium text-[#1A2328]">
                 Patient notes
               </label>
               <div className="flex items-center gap-2">
-                <span className="text-xs text-grey-2">Load a sample:</span>
+                <span className="text-xs text-[#484F53]">Load a sample:</span>
                 <select
                   aria-label="Load sample note into textarea"
                   onChange={(e) => { handleLoadSample(e.target.value); e.target.value = ""; }}
                   defaultValue=""
-                  className="rounded-lg border border-grey-4 bg-paper px-2 py-1 text-xs text-ink-soft focus:border-brand focus:outline-none"
+                  className="bg-white px-2 py-1 text-xs text-[#484F53] focus:border-[#099A93] focus:outline-none"
+                  style={{ border: "1px solid #1A2328" }}
                 >
                   <option value="" disabled>Select…</option>
                   {SAMPLE_NOTES.map((sn) => (
@@ -193,13 +201,14 @@ export function VisitPrepClient() {
               onChange={(e) => setNote(e.target.value)}
               rows={7}
               placeholder="Paste patient notes, appointment summary, referral letter, or visit description…"
-              className="w-full resize-y rounded-xl border border-grey-4 bg-paper px-4 py-3 text-sm text-ink placeholder:text-grey-3 focus:border-brand focus:outline-none focus:ring-2 focus:ring-sky"
+              className="w-full resize-y bg-white px-4 py-3 text-sm text-[#1A2328] placeholder:text-[#484F53] focus:border-[#099A93] focus:outline-none focus:ring-1 focus:ring-[#D8F5F3]"
+              style={{ border: "1px solid #1A2328" }}
             />
             <button
               type="button"
               onClick={handleGenerate}
               disabled={loading || !note.trim()}
-              className="rounded-xl bg-brand px-6 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-bright disabled:cursor-not-allowed disabled:opacity-40"
+              className="bg-[#099A93] px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#22A49E] disabled:cursor-not-allowed disabled:opacity-40"
             >
               {loading ? "Generating…" : "Generate Visit Brief"}
             </button>
@@ -207,9 +216,12 @@ export function VisitPrepClient() {
 
           {/* Loading state */}
           {loading && (
-            <div className="flex items-center gap-3 rounded-xl border border-grey-4 bg-sky px-5 py-4 text-sm text-brand">
+            <div
+              className="flex items-center gap-3 px-5 py-4 text-sm text-[#099A93]"
+              style={{ border: "1px solid #1A2328", background: "#D8F5F3" }}
+            >
               <span
-                className="inline-block h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-brand border-t-transparent"
+                className="inline-block h-4 w-4 shrink-0 animate-spin border-2 border-[#099A93] border-t-transparent"
                 aria-hidden="true"
               />
               Analysing notes and generating visit brief…
@@ -220,10 +232,11 @@ export function VisitPrepClient() {
           {error && !loading && (
             <div
               role="alert"
-              className="rounded-xl border border-red bg-blush px-5 py-4 text-sm"
+              className="bg-white px-5 py-4 text-sm"
+              style={{ border: "1px solid #1A2328" }}
             >
-              <strong className="font-semibold text-red">Generation failed: </strong>
-              <span className="text-ink-soft">{error}</span>
+              <strong className="font-semibold text-[#1A2328]">Generation failed: </strong>
+              <span className="text-[#484F53]">{error}</span>
             </div>
           )}
 
@@ -232,9 +245,12 @@ export function VisitPrepClient() {
             <div className="space-y-4">
               <VisitBriefRenderer brief={displayBrief} />
 
-              <div className="flex flex-wrap items-center gap-3 border-t border-grey-4 pt-4">
+              <div
+                className="flex flex-wrap items-center gap-3 pt-4"
+                style={{ borderTop: "1px solid #1A2328" }}
+              >
                 {actionState === "approved" ? (
-                  <span className="flex items-center gap-2 rounded-full bg-mint px-4 py-1.5 text-sm font-semibold text-emerald-700">
+                  <span className="vp-approved-chip">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                       <path
                         d="M2.5 7.5l3 3 6-6"
@@ -250,7 +266,8 @@ export function VisitPrepClient() {
                   <button
                     type="button"
                     onClick={() => setActionState("approved")}
-                    className="rounded-xl border border-grey-4 bg-paper px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-grey-3 hover:bg-cool"
+                    className="bg-white px-4 py-2 text-sm font-medium text-[#1A2328] transition-colors hover:bg-[#D8F5F3]"
+                    style={{ border: "1px solid #1A2328" }}
                   >
                     Approve
                   </button>
@@ -258,7 +275,8 @@ export function VisitPrepClient() {
                 <button
                   type="button"
                   onClick={handleEdit}
-                  className="rounded-xl border border-grey-4 bg-paper px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-grey-3 hover:bg-cool"
+                  className="bg-white px-4 py-2 text-sm font-medium text-[#1A2328] transition-colors hover:bg-[#D8F5F3]"
+                  style={{ border: "1px solid #1A2328" }}
                 >
                   Edit
                 </button>
@@ -266,7 +284,8 @@ export function VisitPrepClient() {
                   type="button"
                   onClick={handleGenerate}
                   disabled={loading}
-                  className="rounded-xl border border-grey-4 bg-paper px-4 py-2 text-sm font-medium text-grey-2 transition-colors hover:border-grey-3 hover:text-ink disabled:opacity-40"
+                  className="bg-white px-4 py-2 text-sm font-medium text-[#484F53] transition-colors hover:text-[#1A2328] hover:bg-[#D8F5F3] disabled:opacity-40"
+                  style={{ border: "1px solid #1A2328" }}
                 >
                   Regenerate
                 </button>
@@ -280,8 +299,8 @@ export function VisitPrepClient() {
           {actionState === "editing" && brief && (
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-ink">Edit VisitBrief JSON</p>
-                <p className="text-xs text-grey-2">Modify fields and apply to re-render</p>
+                <p className="text-sm font-medium text-[#1A2328]">Edit VisitBrief JSON</p>
+                <p className="text-xs text-[#484F53]">Modify fields and apply to re-render</p>
               </div>
               <textarea
                 value={editJson}
@@ -289,10 +308,11 @@ export function VisitPrepClient() {
                 rows={20}
                 spellCheck={false}
                 aria-label="VisitBrief JSON editor"
-                className="w-full resize-y rounded-xl border border-grey-4 bg-paper px-4 py-3 font-mono text-xs text-ink focus:border-brand focus:outline-none focus:ring-2 focus:ring-sky"
+                className="w-full resize-y bg-white px-4 py-3 font-mono text-xs text-[#1A2328] focus:border-[#099A93] focus:outline-none focus:ring-1 focus:ring-[#D8F5F3]"
+                style={{ border: "1px solid #1A2328" }}
               />
               {editError && (
-                <p role="alert" className="text-xs font-medium text-red">
+                <p role="alert" className="text-xs font-medium text-[#484F53]">
                   {editError}
                 </p>
               )}
@@ -300,7 +320,7 @@ export function VisitPrepClient() {
                 <button
                   type="button"
                   onClick={handleApplyEdit}
-                  className="rounded-xl bg-brand px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-bright"
+                  className="bg-[#099A93] px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#22A49E]"
                 >
                   Apply Edit
                 </button>
@@ -310,7 +330,8 @@ export function VisitPrepClient() {
                     setActionState("idle");
                     setEditError(null);
                   }}
-                  className="rounded-xl border border-grey-4 bg-paper px-5 py-2 text-sm font-medium text-grey-2 transition-colors hover:text-ink"
+                  className="bg-white px-5 py-2 text-sm font-medium text-[#484F53] transition-colors hover:text-[#1A2328]"
+                  style={{ border: "1px solid #1A2328" }}
                 >
                   Cancel
                 </button>

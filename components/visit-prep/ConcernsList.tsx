@@ -6,9 +6,9 @@ interface ConcernsListProps {
 }
 
 const emphasisConcernStyle: Record<Concern["emphasis"], string> = {
-  primary: "border-l-4 border-l-orange-deep bg-blush",
-  normal: "border-l-4 border-l-grey-3 bg-cool",
-  muted: "border-l-2 border-l-grey-4 bg-paper opacity-75",
+  primary: "border-l-4 border-l-[#099A93] bg-[#D8F5F3]",
+  normal: "border-l-4 border-l-[#484F53] bg-[#F2F2F2]",
+  muted: "border-l-2 border-l-[#484F53] bg-white opacity-75",
 };
 
 export function ConcernsList({ concerns, emphasis = "normal" }: ConcernsListProps) {
@@ -16,14 +16,15 @@ export function ConcernsList({ concerns, emphasis = "normal" }: ConcernsListProp
   return (
     <div
       className={[
-        "rounded-xl border border-grey-4 bg-paper",
-        emphasis === "primary" ? "border-l-4 border-l-brand p-6" : emphasis === "muted" ? "p-3" : "p-4",
+        "bg-white",
+        emphasis === "primary" ? "border-l-4 border-l-[#099A93] p-6" : emphasis === "muted" ? "p-3" : "p-4",
       ].join(" ")}
+      style={{ border: "1px solid #1A2328" }}
     >
       <h3
         className={[
-          "font-semibold text-ink",
-          emphasis === "primary" ? "mb-4 text-lg" : emphasis === "muted" ? "mb-2 text-xs uppercase tracking-widest text-grey-2" : "mb-3 text-base",
+          "text-[#000000]",
+          emphasis === "primary" ? "mb-4 text-lg" : emphasis === "muted" ? "mb-2 text-xs uppercase tracking-widest text-[#484F53]" : "mb-3 text-base",
         ].join(" ")}
       >
         Concerns to Raise
@@ -32,7 +33,7 @@ export function ConcernsList({ concerns, emphasis = "normal" }: ConcernsListProp
         {concerns.map((concern, i) => (
           <li
             key={i}
-            className={["rounded-lg px-4 py-3 text-sm text-ink", emphasisConcernStyle[concern.emphasis]].join(" ")}
+            className={["px-4 py-3 text-sm text-[#1A2328]", emphasisConcernStyle[concern.emphasis]].join(" ")}
           >
             {concern.text}
           </li>

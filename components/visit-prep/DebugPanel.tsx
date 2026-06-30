@@ -9,16 +9,16 @@ interface DebugPanelProps {
 export function DebugPanel({ brief }: DebugPanelProps) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="rounded-xl border border-grey-4 bg-paper text-sm">
+    <div className="bg-white text-sm" style={{ border: "1px solid #1A2328" }}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center justify-between px-4 py-3 text-left font-medium text-grey-2 transition-colors hover:text-ink"
+        className="flex w-full items-center justify-between px-4 py-3 text-left font-medium text-[#484F53] transition-colors hover:text-[#1A2328]"
         aria-expanded={open}
       >
         <span className="flex items-center gap-2">
-          <span className="inline-flex h-4 w-4 items-center justify-center rounded bg-cool text-[10px] font-bold text-grey-2">
-            {}
+          <span className="inline-flex h-4 w-4 items-center justify-center bg-[#F2F2F2] text-[10px] font-bold text-[#484F53]">
+            {"{}"}
           </span>
           Debug · Raw VisitBrief JSON
         </span>
@@ -32,7 +32,10 @@ export function DebugPanel({ brief }: DebugPanelProps) {
         </svg>
       </button>
       {open && (
-        <pre className="overflow-x-auto border-t border-grey-4 px-4 py-4 text-xs leading-relaxed text-ink-soft">
+        <pre
+          className="overflow-x-auto px-4 py-4 text-xs leading-relaxed text-[#484F53]"
+          style={{ borderTop: "1px solid #1A2328" }}
+        >
           {JSON.stringify(brief, null, 2)}
         </pre>
       )}
