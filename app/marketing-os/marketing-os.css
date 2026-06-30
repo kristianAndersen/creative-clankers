@@ -1,25 +1,26 @@
 /* All rules scoped to .mos-root — cannot bleed into other routes */
 
 .mos-root {
-  --mos-bg:             #0F141A;
-  --mos-surface:        #141B24;
-  --mos-surface-muted:  #0D1119;
-  --mos-surface-raised: #1A2230;
-  --mos-surface-card:   #16202B;
-  --mos-ink:            #DDE4ED;
-  --mos-ink-mid:        #8A9BB0;
-  --mos-ink-faint:      #4A5A6E;
-  --mos-accent:         #34D399;
-  --mos-accent-dim:     #1DB87A;
-  --mos-accent-pale:    rgba(52, 211, 153, 0.08);
-  --mos-accent-glow:    rgba(52, 211, 153, 0.2);
-  --mos-rule:           #1C2836;
-  --mos-rule-bright:    #243344;
-  --mos-dark-panel:     #07090E;
-  --mos-negative:       #F87171;
-  --mos-positive:       #34D399;
+  --mos-bg:             #F8F3E8;
+  --mos-surface:        #FFFFFF;
+  --mos-surface-muted:  #F2EDE0;
+  --mos-surface-raised: #FFFFFF;
+  --mos-surface-card:   #FFFFFF;
+  --mos-ink:            #0F0F0E;
+  --mos-ink-mid:        #5A554A;
+  --mos-ink-faint:      #6B6558;
+  --mos-accent:         #440010;
+  --mos-accent-dim:     #600018;
+  --mos-accent-pale:    rgba(68, 0, 16, 0.06);
+  --mos-accent-glow:    rgba(68, 0, 16, 0.12);
+  --mos-highlight:      #DA9FEF;
+  --mos-rule:           #E2DCD0;
+  --mos-rule-bright:    #D4CCC2;
+  --mos-dark-panel:     #1A0008;
+  --mos-negative:       #B91C1C;
+  --mos-positive:       #166534;
 
-  --mos-font-sans: var(--mos-font-sans-var, system-ui, sans-serif);
+  --mos-font-sans: 'Sambla Sans', var(--mos-font-sans-var, 'Instrument Sans'), system-ui, sans-serif;
 
   background:  var(--mos-bg);
   color:       var(--mos-ink);
@@ -127,7 +128,7 @@
 
 .mos-root .mos-card:hover {
   border-color: var(--mos-accent-dim);
-  background:   #18232F;
+  background:   var(--mos-surface-muted);
 }
 
 .mos-root .mos-card::before {
@@ -154,7 +155,7 @@
   height:         36px;
   border-radius:  8px;
   background:     var(--mos-accent-pale);
-  border:         1px solid rgba(52, 211, 153, 0.15);
+  border:         1px solid rgba(68, 0, 16, 0.1);
   margin-bottom:  1rem;
   font-size:      1rem;
 }
@@ -219,71 +220,19 @@
   margin-top:  -0.5rem;
 }
 
-/* ── KPI tile ───────────────────────────────────── */
+/* ── Screenshot frame ───────────────────────────── */
 
-.mos-root .mos-kpi-tile {
-  background:    var(--mos-surface-raised);
+.mos-root .mos-screenshot-frame {
+  border-radius: 12px;
+  overflow:      hidden;
   border:        1px solid var(--mos-rule);
-  border-radius: 8px;
-  padding:       0.875rem 1rem;
+  box-shadow:    0 24px 64px rgba(15, 15, 14, 0.10), 0 4px 16px rgba(15, 15, 14, 0.05);
 }
 
-.mos-root .mos-kpi-label {
-  font-size:      0.65rem;
-  font-weight:    600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color:          var(--mos-ink-faint);
-  margin-bottom:  0.35rem;
-}
-
-.mos-root .mos-kpi-value {
-  font-size:      1.35rem;
-  font-weight:    700;
-  letter-spacing: -0.03em;
-  color:          var(--mos-ink);
-  line-height:    1;
-  margin-bottom:  0.25rem;
-}
-
-.mos-root .mos-kpi-delta {
-  font-size:  0.7rem;
-  font-weight: 500;
-}
-
-.mos-root .mos-kpi-delta.up   { color: var(--mos-positive); }
-.mos-root .mos-kpi-delta.down { color: var(--mos-negative); }
-
-/* ── Pipeline agent box ─────────────────────────── */
-
-.mos-root .mos-pipeline-box {
-  background:    var(--mos-surface-card);
-  border:        1px solid var(--mos-rule-bright);
-  border-radius: 8px;
-  padding:       0.75rem 1rem;
-  flex:          1;
-  min-width:     0;
-}
-
-.mos-root .mos-pipeline-box-label {
-  font-size:      0.6rem;
-  font-weight:    600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color:          var(--mos-accent);
-  margin-bottom:  0.3rem;
-}
-
-.mos-root .mos-pipeline-box-name {
-  font-size:   0.8rem;
-  font-weight: 600;
-  color:       var(--mos-ink);
-  margin-bottom: 0.2rem;
-}
-
-.mos-root .mos-pipeline-box-sub {
-  font-size: 0.65rem;
-  color:     var(--mos-ink-faint);
+.mos-root .mos-screenshot-frame img {
+  display: block;
+  width:   100%;
+  height:  auto;
 }
 
 /* ── CTA buttons ────────────────────────────────── */
@@ -293,7 +242,7 @@
   align-items:     center;
   gap:             0.5rem;
   background:      var(--mos-accent);
-  color:           #07090E;
+  color:           #FFFFFF;
   font-family:     var(--mos-font-sans);
   font-weight:     600;
   font-size:       0.875rem;
@@ -346,24 +295,6 @@
 
 .mos-root .mos-fade-slide.is-visible {
   animation: mos-fade-slide 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* ── Market bar ─────────────────────────────────── */
-
-.mos-root .mos-market-bar-track {
-  width:         100%;
-  height:        4px;
-  background:    var(--mos-rule);
-  border-radius: 2px;
-  overflow:      hidden;
-  margin-top:    0.3rem;
-}
-
-.mos-root .mos-market-bar-fill {
-  height:        100%;
-  border-radius: 2px;
-  background:    var(--mos-accent);
-  opacity:       0.7;
 }
 
 /* ── Reduced motion ─────────────────────────────── */

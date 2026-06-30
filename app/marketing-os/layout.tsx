@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
-import { Inter } from "next/font/google";
+import { Instrument_Sans } from "next/font/google";
 import "./marketing-os.css";
 
-const inter = Inter({
+const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--mos-font-sans-var",
@@ -20,5 +20,5 @@ export default function MarketingOSLayout({
 }: {
   children: ReactNode;
 }) {
-  return <div className={`mos-root ${inter.variable}`}>{children}</div>;
+  return <div className={`mos-root ${instrumentSans.variable}`}>{children}</div>;
 }
