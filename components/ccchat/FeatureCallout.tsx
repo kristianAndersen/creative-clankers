@@ -9,7 +9,7 @@ export default function FeatureCallout({ claim, body, index }: FeatureCalloutPro
     <div
       style={{
         paddingBlock: "2rem",
-        borderTop: "1px solid rgba(245,239,224,0.10)",
+        borderTop: "1px solid rgba(139,148,158,0.15)",
         display: "grid",
         gridTemplateColumns: "minmax(0, 1fr)",
         gap: "0.75rem",

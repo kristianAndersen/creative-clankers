@@ -2,8 +2,8 @@ export default function Kiln() {
   return (
     <section
       style={{
-        borderTop: "1px solid rgba(245,239,224,0.10)",
-        borderBottom: "1px solid rgba(245,239,224,0.10)",
+        borderTop: "1px solid rgba(139,148,158,0.15)",
+        borderBottom: "1px solid rgba(139,148,158,0.15)",
         padding: "clamp(64px, 10vw, 120px) 1.5rem",
         background: "var(--ccc-bg)",
       }}

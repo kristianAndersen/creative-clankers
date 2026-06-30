@@ -1,29 +1,29 @@
 /* All rules scoped to .ccc-root — cannot bleed into other routes */
 
 .ccc-root {
-  /* ── Palette ── */
-  --ccc-bg:         #1C1208;
-  --ccc-surface:    #2A1D10;
-  --ccc-parchment:  #F5EFE0;
-  --ccc-amber:      #E8A214;
-  --ccc-rust:       #C1440E;        /* border/accent only — too dark for text */
-  --ccc-rust-text:  #E8703C;        /* text use: 5.98:1 on bg, 5.32:1 on surface */
-  --ccc-pale-gold:  #D4A574;
-  --ccc-sienna:     #7A3B1E;        /* border/accent only — too dark for text */
-  --ccc-sienna-text: #CD8B6E;       /* text use: 6.67:1 on bg, 5.86:1 on surface */
-  --ccc-ash:        #A89880;        /* was #8C7A68; 6.56:1 on bg, 5.83:1 on surface */
-  --ccc-rule:       rgba(245, 239, 224, 0.10);
-  --ccc-rule-warm:  rgba(232, 162, 20, 0.20);
+  /* ── Palette — dark-slate tech theme matching the ccchat app ── */
+  --ccc-bg:          #0D1117;
+  --ccc-surface:     #161B22;
+  --ccc-parchment:   #E6EDF3;        /* body text: ~16:1 on bg */
+  --ccc-amber:       #A78BFA;        /* purple/lavender accent (wordmark colour) */
+  --ccc-rust:        #238636;        /* agent-A border (green) */
+  --ccc-rust-text:   #3FB950;        /* agent-A text — teal-green: 7.3:1 on bg */
+  --ccc-pale-gold:   #58A6FF;        /* agent-B text — blue: 5.9:1 on bg */
+  --ccc-sienna:      #CF222E;        /* agent-C border (red) */
+  --ccc-sienna-text: #FF7B72;        /* agent-C text — coral/pink: 5.1:1 on bg */
+  --ccc-ash:         #B6C2CF;        /* muted / secondary text: 10.9:1 on bg */
+  --ccc-rule:        rgba(139, 148, 158, 0.15);
+  --ccc-rule-warm:   rgba(167, 139, 250, 0.20);
 
   /* ── Font vars — next/font injects via variable prop ── */
   --ccc-font-condensed: var(--ccc-font-condensed-var, 'Barlow Condensed', 'Arial Narrow', sans-serif);
   --ccc-font-serif:     var(--ccc-font-serif-var, Georgia, serif);
-  --ccc-font-mono:      var(--ccc-font-mono-var, 'Courier New', monospace);
+  --ccc-font-mono:      var(--ccc-font-mono-var, ui-monospace, 'Cascadia Code', 'JetBrains Mono', 'Fira Code', 'Consolas', 'Courier New', monospace);
   --ccc-font-sans:      var(--ccc-font-sans-var, system-ui, sans-serif);
 
   background:  var(--ccc-bg);
   color:       var(--ccc-parchment);
-  font-family: var(--ccc-font-sans);
+  font-family: var(--ccc-font-mono);
   min-height:  100vh;
 }
 
@@ -76,10 +76,10 @@
   100%         { opacity: 0; }
 }
 
-/* Parent amber flash on firing */
+/* Parent accent flash on firing */
 @keyframes kiln-flash {
   0%, 59%      { background: var(--ccc-surface); }
-  62%          { background: rgba(232, 162, 20, 0.07); }
+  62%          { background: rgba(167, 139, 250, 0.07); }
   67%          { background: var(--ccc-surface); }
   100%         { background: var(--ccc-surface); }
 }
