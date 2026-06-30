@@ -55,9 +55,8 @@ export default function Kiln() {
                 fontWeight: 500,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                color: "var(--ccc-rust)",
+                color: "var(--ccc-rust-text)",
                 marginBottom: "0.4rem",
-                opacity: 0.7,
               }}
             >
               Agent A · Claim
@@ -80,7 +79,6 @@ export default function Kiln() {
                 textTransform: "uppercase",
                 color: "var(--ccc-pale-gold)",
                 marginBottom: "0.4rem",
-                opacity: 0.7,
               }}
             >
               Agent B · Challenge
@@ -101,9 +99,8 @@ export default function Kiln() {
                 fontWeight: 500,
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
-                color: "var(--ccc-sienna)",
+                color: "var(--ccc-sienna-text)",
                 marginBottom: "0.4rem",
-                opacity: 0.7,
               }}
             >
               Agent C · Evidence

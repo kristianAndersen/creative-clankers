@@ -102,7 +102,6 @@ export default function SessionExcerpt() {
                 textTransform: "uppercase",
                 color: "var(--ccc-ash)",
                 marginBottom: "0.5rem",
-                opacity: 0.7,
               }}
             >
               [DECISION] · unanimous · logged

@@ -17,7 +17,7 @@ const agentStyle: Record<
     fontFamily: "var(--ccc-font-condensed)",
     fontWeight: 300,
     textTransform: "uppercase",
-    color: "var(--ccc-rust)",
+    color: "var(--ccc-rust-text)",
     fontSize: "clamp(1rem, 2vw, 1.15rem)",
   },
   b: {
@@ -30,7 +30,7 @@ const agentStyle: Record<
   c: {
     fontFamily: "var(--ccc-font-mono)",
     fontWeight: 400,
-    color: "var(--ccc-sienna)",
+    color: "var(--ccc-sienna-text)",
     fontSize: "clamp(0.82rem, 1.6vw, 0.95rem)",
   },
 };
