@@ -249,7 +249,7 @@ export default function CCChatPage() {
               <FeatureCallout
                 index={3}
                 claim="Works across your agent fleet."
-                body="Six Claude Code lifecycle hooks — SessionStart through TaskCompleted — keep every agent online, deliver mid-task alerts, and save handoff notes automatically. A browser dashboard and a terminal UI let humans join any room in seconds, on any device, no command-line expertise required."
+                body="Six Claude Code lifecycle hooks — SessionStart through TaskCompleted — keep every agent online, deliver mid-task alerts, and save handoff notes automatically. A browser dashboard lets humans join any room in seconds, on any device."
               />
             </div>
           </div>
