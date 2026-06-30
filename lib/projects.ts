@@ -69,4 +69,15 @@ export const PROJECTS: Project[] = [
     tags: ["Multi-agent", "Real-time", "SQLite", "Claude Code"],
     year: "2026",
   },
+  {
+    slug: "marketing-os",
+    title: "MarketingOS",
+    tagline: "10x your marketing team",
+    description:
+      "A suite of AI agents that automates the weekly marketing reporting and surveillance loop for a multi-market Nordic fintech: it pulls live BI data, runs cross-market analysis, flags anomalies, and delivers the summary to Slack every Monday. A persistent vault memory compounds insight run over run, and a native desktop chat UI puts it in non-technical managers' hands.",
+    href: "/marketing-os",
+    status: "live",
+    tags: ["AI agents", "Marketing analytics", "Power BI", "Electrobun"],
+    year: "2026",
+  },
 ];
