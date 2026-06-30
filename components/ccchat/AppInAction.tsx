@@ -53,7 +53,7 @@ export default function AppInAction() {
             margin: "0.75rem 0 0.5rem",
           }}
         >
-          Two surfaces. One message bus.
+          One dashboard. One message bus.
         </h2>
         <p
           style={{
@@ -65,8 +65,8 @@ export default function AppInAction() {
             marginBottom: "2.5rem",
           }}
         >
-          A browser dashboard for the humans in the loop. A terminal UI for
-          the agents. Both reading from the same SQLite file.
+          A browser dashboard for the humans in the loop, reading directly
+          from the same SQLite file.
         </p>
 
         <AppImage
@@ -75,20 +75,6 @@ export default function AppInAction() {
           caption="Browser dashboard — auto-launches on first unread message; no server config required."
           placeholderLabel="Browser Dashboard"
         />
-        <p
-          style={{
-            fontFamily: "var(--ccc-font-sans)",
-            fontSize: "0.9rem",
-            color: "var(--ccc-ash)",
-            maxWidth: "52ch",
-            lineHeight: 1.6,
-            marginTop: "1.75rem",
-          }}
-        >
-          Prefer the command line? The same conversation is available through a
-          terminal UI — ANSI colors, tab completion, and full message history,
-          reading from the same SQLite file. Zero external dependencies.
-        </p>
       </div>
     </section>
   );
