@@ -15,6 +15,17 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
+    slug: "advisor",
+    title: "Advisor",
+    tagline: "The engine behind every demo on this page",
+    description:
+      "A chief-of-staff orchestrator that breaks your request into focused assignments, matches each to the right specialist, runs them in parallel, double-checks the results, and hands you one finished answer. The framework that built the other projects here.",
+    href: "/advisor",
+    status: "framework",
+    tags: ["Multi-agent", "Orchestration", "AI Framework", "Bun / Node.js"],
+    year: "2026",
+  },
+  {
     slug: "data-to-decision",
     title: "Data → Decision",
     tagline: "A live AI agent",
@@ -34,28 +45,6 @@ export const PROJECTS: Project[] = [
     href: "/substitution",
     status: "live",
     tags: ["Multi-step agent", "Streaming UI", "Tool use", "medicinpriser.dk"],
-    year: "2026",
-  },
-  {
-    slug: "sundhedsradar",
-    title: "Sundhedsradar",
-    tagline: "Dansk sundhedsvejrudsigt, uge for uge",
-    description:
-      "Et live komposit-signal for alle 98 kommuner — spildevand, receptdata, demografi og vejr foldet til ét risikoniveau. Klik en kommune for 5-årig historik, eller skift til Planlæggertilstand for AI-vejledning skræddersyet til din begivenhed og husstand.",
-    href: "/sundhedsradar",
-    status: "live",
-    tags: ["DST + SSI", "Composite signal", "Streaming UI", "Next.js"],
-    year: "2026",
-  },
-  {
-    slug: "advisor",
-    title: "Advisor",
-    tagline: "The engine behind every demo on this page",
-    description:
-      "A chief-of-staff orchestrator that breaks your request into focused assignments, matches each to the right specialist, runs them in parallel, double-checks the results, and hands you one finished answer. The framework that built the other projects here.",
-    href: "/advisor",
-    status: "framework",
-    tags: ["Multi-agent", "Orchestration", "AI Framework", "Bun / Node.js"],
     year: "2026",
   },
   {
