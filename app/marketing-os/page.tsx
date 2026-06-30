@@ -48,13 +48,6 @@ const FEATURES = [
   },
 ];
 
-const MARKETS = [
-  { code: "DK", leads: "4,280", pct: 33 },
-  { code: "NO", leads: "3,150", pct: 25 },
-  { code: "FI", leads: "2,820", pct: 22 },
-  { code: "SE", leads: "2,590", pct: 20 },
-];
-
 const STACK = [
   "Claude Code agents",
   "Advisor framework",
@@ -102,7 +95,7 @@ export default function MarketingOSPage() {
           borderBottom: "1px solid var(--mos-rule)",
           position: "sticky",
           top: 0,
-          background: "rgba(15, 20, 26, 0.92)",
+          background: "rgba(248, 243, 232, 0.96)",
           backdropFilter: "blur(12px)",
           WebkitBackdropFilter: "blur(12px)",
           zIndex: 40,
@@ -159,14 +152,14 @@ export default function MarketingOSPage() {
             borderBottom: "1px solid var(--mos-rule)",
           }}
         >
-          {/* subtle grid texture */}
+          {/* subtle warm grid texture */}
           <div
             aria-hidden
             style={{
               position: "absolute",
               inset: 0,
               backgroundImage:
-                "linear-gradient(to right, rgba(52,211,153,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(52,211,153,0.03) 1px, transparent 1px)",
+                "linear-gradient(to right, rgba(68,0,16,0.025) 1px, transparent 1px), linear-gradient(to bottom, rgba(68,0,16,0.025) 1px, transparent 1px)",
               backgroundSize: "48px 48px",
               pointerEvents: "none",
             }}
@@ -181,7 +174,7 @@ export default function MarketingOSPage() {
               width: "60%",
               height: "60%",
               background:
-                "radial-gradient(ellipse at center, rgba(52,211,153,0.06) 0%, transparent 70%)",
+                "radial-gradient(ellipse at center, rgba(218,159,239,0.14) 0%, transparent 70%)",
               pointerEvents: "none",
             }}
           />
@@ -194,7 +187,7 @@ export default function MarketingOSPage() {
                 alignItems: "center",
                 gap: "0.5rem",
                 background: "var(--mos-accent-pale)",
-                border: "1px solid rgba(52, 211, 153, 0.2)",
+                border: "1px solid rgba(68, 0, 16, 0.18)",
                 borderRadius: "100px",
                 padding: "0.3rem 0.85rem",
                 marginBottom: "2rem",
@@ -296,7 +289,7 @@ export default function MarketingOSPage() {
           </div>
         </section>
 
-        {/* ── Section 2: App in Action (Dashboard Mockup) ── */}
+        {/* ── Section 2: App in Action ── */}
         <section
           id="app-in-action"
           style={{
@@ -313,451 +306,37 @@ export default function MarketingOSPage() {
               data-delay="60"
               style={{
                 fontSize: "clamp(1.7rem, 3.5vw, 2.6rem)",
-                margin: "0.75rem 0 2.5rem",
+                margin: "0.75rem 0 1rem",
                 maxWidth: 520,
               }}
             >
-              One dashboard. Every market. Every week.
+              Upload documents. Ask a question. Get a brief.
             </h2>
-
-            {/* Dashboard mockup window */}
-            <div
-              className="mos-animate"
-              data-delay="120"
-              style={{
-                background: "#0A0F15",
-                border: "1px solid var(--mos-rule-bright)",
-                borderRadius: 14,
-                overflow: "hidden",
-                boxShadow:
-                  "0 32px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(52,211,153,0.05)",
-              }}
-            >
-              {/* Window chrome / titlebar */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                  padding: "10px 16px",
-                  borderBottom: "1px solid var(--mos-rule)",
-                  background: "#07090E",
-                }}
-              >
-                <span
-                  style={{
-                    width: 10,
-                    height: 10,
-                    borderRadius: "50%",
-                    background: "#FF5F57",
-                    flexShrink: 0,
-                  }}
-                />
-                <span
-                  style={{
-                    width: 10,
-                    height: 10,
-                    borderRadius: "50%",
-                    background: "#FEBC2E",
-                    flexShrink: 0,
-                  }}
-                />
-                <span
-                  style={{
-                    width: 10,
-                    height: 10,
-                    borderRadius: "50%",
-                    background: "#28C840",
-                    flexShrink: 0,
-                  }}
-                />
-                <span
-                  style={{
-                    marginLeft: 16,
-                    fontSize: "0.72rem",
-                    color: "var(--mos-ink-faint)",
-                    fontWeight: 500,
-                  }}
-                >
-                  MarketingOS — Mission Control
-                </span>
-                <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: "0.4rem" }}>
-                  <span className="mos-live-dot" style={{ width: 6, height: 6 }} />
-                  <span
-                    style={{
-                      fontSize: "0.68rem",
-                      color: "var(--mos-accent)",
-                      fontWeight: 600,
-                      letterSpacing: "0.08em",
-                    }}
-                  >
-                    LIVE
-                  </span>
-                </div>
-              </div>
-
-              {/* Tab bar */}
-              <div
-                style={{
-                  display: "flex",
-                  borderBottom: "1px solid var(--mos-rule)",
-                  padding: "0 16px",
-                  background: "#09101A",
-                }}
-              >
-                {["Weekly Report", "Surveillance", "Exec View"].map((tab, i) => (
-                  <div
-                    key={tab}
-                    style={{
-                      padding: "9px 16px",
-                      fontSize: "0.73rem",
-                      fontWeight: i === 0 ? 600 : 400,
-                      color: i === 0 ? "var(--mos-accent)" : "var(--mos-ink-faint)",
-                      borderBottom:
-                        i === 0
-                          ? "2px solid var(--mos-accent)"
-                          : "2px solid transparent",
-                      cursor: "default",
-                      userSelect: "none",
-                    }}
-                  >
-                    {tab}
-                  </div>
-                ))}
-                <div
-                  style={{
-                    marginLeft: "auto",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    padding: "0 4px",
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: "0.65rem",
-                      color: "var(--mos-ink-faint)",
-                    }}
-                  >
-                    W25, 2024 · Agent ran 42 min ago · Next: Mon 07:00
-                  </span>
-                </div>
-              </div>
-
-              {/* Dashboard body */}
-              <div style={{ padding: "16px 20px 20px" }}>
-                {/* KPI tiles row */}
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(4, 1fr)",
-                    gap: 10,
-                    marginBottom: 14,
-                  }}
-                >
-                  {[
-                    { label: "Total Leads", value: "12,840", delta: "+8.4% WoW", up: true },
-                    { label: "Blended CAC", value: "€42.10", delta: "−3.2% WoW", up: true },
-                    { label: "Paid ROAS", value: "4.8×", delta: "+0.6× WoW", up: true },
-                    { label: "Budget vs Plan", value: "97.2%", delta: "−2.8pp", up: false },
-                  ].map((kpi) => (
-                    <div key={kpi.label} className="mos-kpi-tile">
-                      <div className="mos-kpi-label">{kpi.label}</div>
-                      <div className="mos-kpi-value">{kpi.value}</div>
-                      <div className={`mos-kpi-delta ${kpi.up ? "up" : "down"}`}>
-                        {kpi.up ? "↑" : "↓"} {kpi.delta}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Chart + Markets side by side */}
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 240px",
-                    gap: 14,
-                    marginBottom: 14,
-                  }}
-                >
-                  {/* Trend chart */}
-                  <div
-                    style={{
-                      background: "var(--mos-surface-raised)",
-                      border: "1px solid var(--mos-rule)",
-                      borderRadius: 8,
-                      padding: "12px 16px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        alignItems: "baseline",
-                        marginBottom: 10,
-                      }}
-                    >
-                      <span
-                        style={{
-                          fontSize: "0.7rem",
-                          fontWeight: 600,
-                          letterSpacing: "0.08em",
-                          textTransform: "uppercase",
-                          color: "var(--mos-ink-faint)",
-                        }}
-                      >
-                        Total Leads — 6-week trend
-                      </span>
-                      <span
-                        style={{
-                          fontSize: "0.65rem",
-                          color: "var(--mos-accent)",
-                          fontWeight: 500,
-                        }}
-                      >
-                        All markets combined
-                      </span>
-                    </div>
-                    <svg
-                      viewBox="0 0 320 72"
-                      preserveAspectRatio="none"
-                      style={{ width: "100%", height: 72, display: "block" }}
-                      aria-hidden
-                    >
-                      <defs>
-                        <linearGradient id="mosChartGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#34D399" stopOpacity="0.25" />
-                          <stop offset="100%" stopColor="#34D399" stopOpacity="0" />
-                        </linearGradient>
-                      </defs>
-                      {/* Grid lines */}
-                      <line x1="0" y1="18" x2="320" y2="18" stroke="#1C2836" strokeWidth="1" />
-                      <line x1="0" y1="36" x2="320" y2="36" stroke="#1C2836" strokeWidth="1" />
-                      <line x1="0" y1="54" x2="320" y2="54" stroke="#1C2836" strokeWidth="1" />
-                      {/* Area fill */}
-                      <polygon
-                        points="0,72 0,66 64,54 128,43 192,37 256,26 320,11 320,72"
-                        fill="url(#mosChartGrad)"
-                      />
-                      {/* Line */}
-                      <polyline
-                        points="0,66 64,54 128,43 192,37 256,26 320,11"
-                        fill="none"
-                        stroke="#34D399"
-                        strokeWidth="1.75"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                      {/* Data points */}
-                      {([[0, 66], [64, 54], [128, 43], [192, 37], [256, 26], [320, 11]] as [number, number][]).map(
-                        ([x, y], i) => (
-                          <circle
-                            key={i}
-                            cx={x}
-                            cy={y}
-                            r={i === 5 ? 4 : 2.5}
-                            fill={i === 5 ? "#34D399" : "#0A0F15"}
-                            stroke="#34D399"
-                            strokeWidth={i === 5 ? 0 : 1.5}
-                          />
-                        )
-                      )}
-                    </svg>
-                    {/* X-axis labels */}
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        marginTop: 6,
-                      }}
-                    >
-                      {["W20", "W21", "W22", "W23", "W24", "W25"].map((w) => (
-                        <span
-                          key={w}
-                          style={{
-                            fontSize: "0.6rem",
-                            color: "var(--mos-ink-faint)",
-                          }}
-                        >
-                          {w}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Market breakdown */}
-                  <div
-                    style={{
-                      background: "var(--mos-surface-raised)",
-                      border: "1px solid var(--mos-rule)",
-                      borderRadius: 8,
-                      padding: "12px 14px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        fontSize: "0.7rem",
-                        fontWeight: 600,
-                        letterSpacing: "0.08em",
-                        textTransform: "uppercase",
-                        color: "var(--mos-ink-faint)",
-                        marginBottom: 12,
-                      }}
-                    >
-                      Market Breakdown
-                    </div>
-                    {MARKETS.map((m) => (
-                      <div key={m.code} style={{ marginBottom: 10 }}>
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "baseline",
-                          }}
-                        >
-                          <span
-                            style={{
-                              fontSize: "0.72rem",
-                              fontWeight: 700,
-                              color: "var(--mos-ink)",
-                              letterSpacing: "0.05em",
-                            }}
-                          >
-                            {m.code}
-                          </span>
-                          <span
-                            style={{
-                              fontSize: "0.7rem",
-                              color: "var(--mos-ink-mid)",
-                            }}
-                          >
-                            {m.leads}
-                          </span>
-                        </div>
-                        <div className="mos-market-bar-track">
-                          <div
-                            className="mos-market-bar-fill"
-                            style={{ width: `${m.pct}%` }}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                    <div
-                      style={{
-                        marginTop: 14,
-                        paddingTop: 10,
-                        borderTop: "1px solid var(--mos-rule)",
-                        fontSize: "0.65rem",
-                        color: "var(--mos-ink-faint)",
-                      }}
-                    >
-                      0 anomalies detected this week
-                    </div>
-                  </div>
-                </div>
-
-                {/* Agent pipeline */}
-                <div
-                  style={{
-                    background: "var(--mos-surface-muted)",
-                    border: "1px solid var(--mos-rule)",
-                    borderRadius: 8,
-                    padding: "12px 16px",
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: "0.65rem",
-                      fontWeight: 600,
-                      letterSpacing: "0.1em",
-                      textTransform: "uppercase",
-                      color: "var(--mos-ink-faint)",
-                      marginBottom: 10,
-                    }}
-                  >
-                    Agent Pipeline
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "stretch",
-                      gap: 0,
-                    }}
-                  >
-                    {[
-                      {
-                        label: "Weekly",
-                        name: "Reporting Agent",
-                        sub: "Mon 07:00 · Slack + email",
-                        status: "✓ Complete",
-                        ok: true,
-                      },
-                      {
-                        label: "Continuous",
-                        name: "Surveillance Agent",
-                        sub: "Alarm threshold: 2σ",
-                        status: "● Monitoring",
-                        ok: true,
-                      },
-                      {
-                        label: "Monthly",
-                        name: "Exec Presentation",
-                        sub: "Last week of month",
-                        status: "◷ Scheduled",
-                        ok: false,
-                      },
-                    ].map((box, i) => (
-                      <div key={box.name} style={{ display: "flex", alignItems: "center", flex: 1, minWidth: 0 }}>
-                        <div className="mos-pipeline-box">
-                          <div className="mos-pipeline-box-label">{box.label}</div>
-                          <div className="mos-pipeline-box-name">{box.name}</div>
-                          <div className="mos-pipeline-box-sub">{box.sub}</div>
-                          <div
-                            style={{
-                              marginTop: "0.4rem",
-                              fontSize: "0.62rem",
-                              fontWeight: 500,
-                              color: box.ok ? "var(--mos-accent)" : "var(--mos-ink-faint)",
-                            }}
-                          >
-                            {box.status}
-                          </div>
-                        </div>
-                        {i < 2 && (
-                          <div
-                            style={{
-                              padding: "0 8px",
-                              color: "var(--mos-ink-faint)",
-                              fontSize: "0.8rem",
-                              flexShrink: 0,
-                            }}
-                          >
-                            →
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <p
-              className="mos-animate"
-              data-delay="200"
+              className="mos-fade-slide"
+              data-delay="100"
               style={{
-                marginTop: "1.5rem",
-                fontSize: "0.8rem",
-                color: "var(--mos-ink-faint)",
-                textAlign: "center",
+                maxWidth: "62ch",
+                fontSize: "1rem",
+                lineHeight: 1.75,
+                color: "var(--mos-ink-mid)",
+                marginBottom: "2.5rem",
               }}
             >
-              Stylized mockup — representative of the actual agent output and interface
+              Drag in competitor PDFs, sync from Google Drive, then ask MarketingOS anything.
+              It converts your documents, reasons across them, and surfaces a structured brief — sourced, formatted, and ready to act on.
             </p>
+
+            <div className="mos-screenshot-frame mos-animate" data-delay="120">
+              <img
+                src="/marketing-os/marketingos-hero.png"
+                alt="MarketingOS app — Documents panel showing uploaded competitor PDFs (Q2 Performance Deck, Lendo Pricing Snapshot, Axo Q1 Report) with Ready/Converted/Converting status pills and a green Sync from Google Drive button; below, a purple user bubble asking for a competitive brief on the Nordic personal-loan market; the generated Sambla Group — Nordic Personal-Loan Market Competitive Brief report beginning to appear"
+              />
+            </div>
           </div>
         </section>
 
-        {/* ── Section 3: Features ── */}
+        {/* ── Section 3: Capabilities ── */}
         <section
           style={{
             borderBottom: "1px solid var(--mos-rule)",
@@ -813,7 +392,103 @@ export default function MarketingOSPage() {
           </div>
         </section>
 
-        {/* ── Section 4: How It Works ── */}
+        {/* ── Section 4: Generated reports ── */}
+        <section
+          id="generated-reports"
+          style={{
+            background: "var(--mos-surface-muted)",
+            borderBottom: "1px solid var(--mos-rule)",
+            padding: "clamp(80px, 12vw, 140px) 1.5rem",
+          }}
+        >
+          <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+            <span className="mos-accent-rule" />
+            <span className="mos-section-label mos-fade-slide">03 — Generated reports</span>
+            <h2
+              className="mos-headline mos-fade-slide"
+              data-delay="60"
+              style={{
+                fontSize: "clamp(1.7rem, 3.5vw, 2.6rem)",
+                margin: "0.75rem 0 1rem",
+                maxWidth: 560,
+              }}
+            >
+              From raw question to structured brief — in seconds.
+            </h2>
+            <p
+              className="mos-fade-slide"
+              data-delay="100"
+              style={{
+                maxWidth: "62ch",
+                fontSize: "1rem",
+                lineHeight: 1.75,
+                color: "var(--mos-ink-mid)",
+                marginBottom: "2.5rem",
+              }}
+            >
+              The generated brief reads like a real analyst wrote it: executive summary with bold
+              insight callouts, a market-position comparison table across CVR, CPC, and share of
+              voice, and a "What changed this quarter" breakdown by market. Every claim is traceable
+              to your uploaded sources.
+            </p>
+
+            <div className="mos-screenshot-frame mos-animate" data-delay="120">
+              <img
+                src="/marketing-os/marketingos-report-full.png"
+                alt="Generated Sambla Group competitive brief — executive summary callout highlighting Lendo undercutting on Swedish branded CPC and Axo gaining share in Norway; Market position at a glance table comparing Sambla Group, Lendo, Axo Finans, and Zmarta on blended CVR, avg CPC, share of voice, and QoQ change; What changed this quarter bullet analysis by market"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* ── Section 5: Persistent memory ── */}
+        <section
+          id="persistent-memory"
+          style={{
+            borderBottom: "1px solid var(--mos-rule)",
+            padding: "clamp(80px, 12vw, 140px) 1.5rem",
+          }}
+        >
+          <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+            <span className="mos-accent-rule" />
+            <span className="mos-section-label mos-fade-slide">04 — Persistent memory</span>
+            <h2
+              className="mos-headline mos-fade-slide"
+              data-delay="60"
+              style={{
+                fontSize: "clamp(1.7rem, 3.5vw, 2.6rem)",
+                margin: "0.75rem 0 1rem",
+                maxWidth: 520,
+              }}
+            >
+              Every session builds on the last.
+            </h2>
+            <p
+              className="mos-fade-slide"
+              data-delay="100"
+              style={{
+                maxWidth: "62ch",
+                fontSize: "1rem",
+                lineHeight: 1.75,
+                color: "var(--mos-ink-mid)",
+                marginBottom: "2.5rem",
+              }}
+            >
+              Prior sessions are pinned, tagged by priority, and instantly loadable. MarketingOS
+              remembers what you've investigated — the vault compounds with every run, so detection
+              improves automatically and institutional knowledge stops living in someone's inbox.
+            </p>
+
+            <div className="mos-screenshot-frame mos-animate" data-delay="120">
+              <img
+                src="/marketing-os/marketingos-memory.png"
+                alt="MarketingOS Prior sessions panel showing pinned past sessions: Swedish brand-defence audit (HIGH priority, 2026-06-12), Norway broker-payout teardown (HIGH priority, 2026-05-28), Finland prospecting feasibility (MEDIUM priority, 2026-05-09) — with a burgundy Load history button at top"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* ── Section 6: How It Works ── */}
         <section
           id="how-it-works"
           style={{
@@ -824,7 +499,7 @@ export default function MarketingOSPage() {
         >
           <div style={{ maxWidth: 1080, margin: "0 auto" }}>
             <span className="mos-accent-rule" />
-            <span className="mos-section-label mos-fade-slide">03 — Process</span>
+            <span className="mos-section-label mos-fade-slide">05 — Process</span>
             <h2
               className="mos-headline mos-fade-slide"
               data-delay="60"
@@ -886,7 +561,6 @@ export default function MarketingOSPage() {
                     position: "relative",
                   }}
                 >
-                  {/* Connecting arrow between steps */}
                   {i < 2 && (
                     <div
                       aria-hidden
@@ -972,11 +646,11 @@ export default function MarketingOSPage() {
           </div>
         </section>
 
-        {/* ── Section 5: Closing CTA ── */}
+        {/* ── Section 7: Closing CTA ── */}
         <section
           style={{
             background: "var(--mos-dark-panel)",
-            borderTop: "1px solid rgba(52, 211, 153, 0.12)",
+            borderTop: "1px solid rgba(68, 0, 16, 0.15)",
             padding: "clamp(80px, 12vw, 140px) 1.5rem",
             position: "relative",
             overflow: "hidden",
@@ -992,7 +666,7 @@ export default function MarketingOSPage() {
               width: "50%",
               height: "70%",
               background:
-                "radial-gradient(ellipse at center, rgba(52,211,153,0.07) 0%, transparent 70%)",
+                "radial-gradient(ellipse at center, rgba(218,159,239,0.12) 0%, transparent 70%)",
               pointerEvents: "none",
             }}
           />
@@ -1008,11 +682,11 @@ export default function MarketingOSPage() {
                   fontWeight: 600,
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
-                  color: "var(--mos-accent)",
+                  color: "#DA9FEF",
                   marginBottom: "1.5rem",
                 }}
               >
-                04 — Outcome
+                06 — Outcome
               </span>
               <h2
                 className="mos-display"
@@ -1020,7 +694,7 @@ export default function MarketingOSPage() {
                   fontSize: "clamp(2.2rem, 5vw, 3.6rem)",
                   marginBottom: "1.5rem",
                   maxWidth: 640,
-                  color: "#fff",
+                  color: "#FDEEF2",
                 }}
               >
                 The report writes itself. You just act on it.
@@ -1030,7 +704,7 @@ export default function MarketingOSPage() {
                   maxWidth: "58ch",
                   fontSize: "1.05rem",
                   lineHeight: 1.8,
-                  color: "rgba(221, 228, 237, 0.65)",
+                  color: "rgba(253, 238, 242, 0.75)",
                   marginBottom: "2.5rem",
                 }}
               >
@@ -1048,7 +722,7 @@ export default function MarketingOSPage() {
                   gap: "2rem",
                   marginBottom: "3rem",
                   paddingTop: "2rem",
-                  borderTop: "1px solid rgba(255,255,255,0.06)",
+                  borderTop: "1px solid rgba(253, 238, 242, 0.08)",
                 }}
               >
                 {[
@@ -1063,7 +737,7 @@ export default function MarketingOSPage() {
                         fontSize: "clamp(1.5rem, 3vw, 2.2rem)",
                         fontWeight: 700,
                         letterSpacing: "-0.03em",
-                        color: "var(--mos-accent)",
+                        color: "#DA9FEF",
                         lineHeight: 1,
                         marginBottom: "0.3rem",
                       }}
@@ -1073,7 +747,7 @@ export default function MarketingOSPage() {
                     <div
                       style={{
                         fontSize: "0.78rem",
-                        color: "rgba(221, 228, 237, 0.45)",
+                        color: "rgba(253, 238, 242, 0.5)",
                         fontWeight: 500,
                       }}
                     >
@@ -1097,12 +771,12 @@ export default function MarketingOSPage() {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: "0.375rem",
-                    color: "rgba(221,228,237,0.5)",
+                    color: "rgba(253, 238, 242, 0.55)",
                     fontFamily: "var(--mos-font-sans)",
                     fontSize: "0.875rem",
                     fontWeight: 500,
                     textDecoration: "none",
-                    borderBottom: "1px solid rgba(255,255,255,0.15)",
+                    borderBottom: "1px solid rgba(253, 238, 242, 0.18)",
                     paddingBottom: "0.125rem",
                     transition: "color 0.2s",
                   }}
